@@ -149,10 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c4d2f4222d1904b97e714f5490dcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstBlockSeconds: 0
+  firstBlockSeconds: 1
   addBlockRate: 3
   blockSpaceRadius: 2
   normalBlock: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+    type: 3}
+  rockBlock: {fileID: 4051772861863158749, guid: adf54d8f7900b50429e37450065eb9a9,
+    type: 3}
+  ballBlock: {fileID: 4051772861863158749, guid: 5407446a78a16ba42826f239afc201eb,
     type: 3}
 --- !u!4 &43533436
 Transform:
@@ -354,11 +358,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a,
-        type: 3}
-      propertyPath: m_TagString
-      value: Ball
-      objectReference: {fileID: 0}
     - target: {fileID: 1784785013204505564, guid: 329a34250d779304db1d0aff3383f39a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -551,6 +550,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 737361399265326679, guid: 30430885a80561a4da292fc3aa6546c8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 737361400087975827, guid: 30430885a80561a4da292fc3aa6546c8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30430885a80561a4da292fc3aa6546c8, type: 3}

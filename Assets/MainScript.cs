@@ -10,6 +10,7 @@ public class MainScript : MonoBehaviour
     
     public GameObject normalBlock;
     public GameObject rockBlock;
+    public GameObject ballBlock;
 
     void Start()
     {
@@ -18,13 +19,18 @@ public class MainScript : MonoBehaviour
 
     private void AddRandomBlock()
     {
-        if (Random.Range(0f, 1f) < 0.5f)
+        var randFloat = Random.Range(0f, 1f);
+        if (randFloat < 0.7f)
         {
-            InstantiateBlock(normalBlock);
+            InstantiateBlock(ballBlock);
+        }
+        else if (randFloat < 0.9f)
+        {
+            InstantiateBlock(rockBlock);
         }
         else
         {
-            InstantiateBlock(rockBlock);
+            InstantiateBlock(normalBlock);
         }
     }
     
