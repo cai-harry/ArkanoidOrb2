@@ -13,20 +13,21 @@ public class MainScript : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("AddNormalBlock", firstBlockSeconds, addBlockRate);
-        InvokeRepeating("AddRockBlock", firstBlockSeconds, addBlockRate);
+        InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
+    }
+
+    private void AddRandomBlock()
+    {
+        if (Random.Range(0f, 1f) < 0.5f)
+        {
+            InstantiateBlock(normalBlock);
+        }
+        else
+        {
+            InstantiateBlock(rockBlock);
+        }
     }
     
-    private void AddNormalBlock()
-    {
-        InstantiateBlock(normalBlock);
-    }
-
-    private void AddRockBlock()
-    {
-        InstantiateBlock(rockBlock);
-    }
-
     private void InstantiateBlock(GameObject block)
     {
         // TODO: don't instantiate on top of other blocks or balls
