@@ -9,23 +9,34 @@ public class MainScript : MonoBehaviour
     public float blockSpaceRadius;
     
     public GameObject normalBlock;
+    public GameObject rockBlock;
 
     void Start()
     {
         InvokeRepeating("AddNormalBlock", firstBlockSeconds, addBlockRate);
+        InvokeRepeating("AddRockBlock", firstBlockSeconds, addBlockRate);
     }
     
     private void AddNormalBlock()
+    {
+        InstantiateBlock(normalBlock);
+    }
+
+    private void AddRockBlock()
+    {
+        InstantiateBlock(rockBlock);
+    }
+
+    private void InstantiateBlock(GameObject block)
     {
         // TODO: don't instantiate on top of other blocks or balls
         var randomUnitCirclePosition = Random.insideUnitCircle;
         var startPosition = new Vector3(
             blockSpaceRadius * randomUnitCirclePosition.x,
-            normalBlock.transform.position.y,
+            block.transform.position.y,
             blockSpaceRadius * randomUnitCirclePosition.y
         );
-        Instantiate(normalBlock, startPosition, Quaternion.identity);
+        Instantiate(block, startPosition, Quaternion.identity);
     }
-
     
 }

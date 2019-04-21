@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4051772861863158720}
   - component: {fileID: 4051772861863158723}
   - component: {fileID: 4051772861863158722}
-  - component: {fileID: -2144427175336864044}
+  - component: {fileID: 5400106346979631063}
   m_Layer: 0
-  m_Name: NormalBlock
+  m_Name: RockBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: edc9575e2d311b44c928c38e2c942643, type: 2}
+  - {fileID: 2100000, guid: 0c5772933ac94b44f8bf8328ce925ced, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,7 +92,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-2144427175336864044
+--- !u!114 &5400106346979631063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4051772861863158749}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03627493880a26a4cab843289581b632, type: 3}
+  m_Script: {fileID: 11500000, guid: d075b845d4e295941afc9c9c3672112d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeDelete: 0.05

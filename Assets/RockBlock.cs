@@ -1,14 +1,22 @@
 ﻿using UnityEngine;
 
-public class NormalBlock : MonoBehaviour
+public class RockBlock : MonoBehaviour
 {
+    const int HitsToDestroy = 2;
+
     public float delayBeforeDelete;
-    
+
+    private int _numHits = 0;
+
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            Invoke("RemoveSelf", delayBeforeDelete);
+            _numHits++;
+            if (_numHits >= HitsToDestroy)
+            {
+                Invoke("RemoveSelf", delayBeforeDelete);
+            }
         }
     }
 
