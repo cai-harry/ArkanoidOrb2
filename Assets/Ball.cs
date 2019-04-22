@@ -11,4 +11,9 @@ public class Ball : MonoBehaviour
     {
         rigidBody.AddForce(startSpeed * Vector3.left);
     }
+    
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
+    }
 }
