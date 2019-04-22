@@ -105,7 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52843970d6d9f243918995603494095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeDelete: 0
+  delayBeforeDelete: 0.05
+  explosionForce: 10
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
 --- !u!1 &8961670726740672061
 GameObject:

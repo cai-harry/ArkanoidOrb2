@@ -361,23 +361,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4486086454571962500, guid: d911409fc51e3f64596cbe1b0b715ec5,
-        type: 3}
-      propertyPath: stage
-      value: 
-      objectReference: {fileID: 4679880167564661774, guid: f87b8e3452b0af8499884f1209dcbf7c,
-        type: 3}
-    - target: {fileID: 4486086454571962500, guid: d911409fc51e3f64596cbe1b0b715ec5,
-        type: 3}
-      propertyPath: paddles
-      value: 
-      objectReference: {fileID: 737361400437060697, guid: 30430885a80561a4da292fc3aa6546c8,
-        type: 3}
-    - target: {fileID: 4486086454571962500, guid: d911409fc51e3f64596cbe1b0b715ec5,
-        type: 3}
-      propertyPath: ball
-      value: 
-      objectReference: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d911409fc51e3f64596cbe1b0b715ec5, type: 3}

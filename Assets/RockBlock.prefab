@@ -106,3 +106,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBeforeDelete: 0.05
   crackedRockMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
+  explosionForce: 10

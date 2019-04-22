@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c4d2f4222d1904b97e714f5490dcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage: {fileID: 4679880167564661774, guid: f87b8e3452b0af8499884f1209dcbf7c, type: 3}
+  paddles: {fileID: 737361400437060697, guid: 30430885a80561a4da292fc3aa6546c8, type: 3}
+  ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
   firstBlockSeconds: 1
   addBlockRate: 3
   blockSpaceRadius: 2
@@ -52,6 +55,8 @@ MonoBehaviour:
   rockBlock: {fileID: 4051772861863158749, guid: adf54d8f7900b50429e37450065eb9a9,
     type: 3}
   ballBlock: {fileID: 4051772861863158749, guid: 5407446a78a16ba42826f239afc201eb,
+    type: 3}
+  explodeBlock: {fileID: 4051772861863158749, guid: a1a14e8919de92645bf57e97f6956cc1,
     type: 3}
   strikebeamSong: {fileID: 375696800514187116}
   pauseScreen: {fileID: 7251827140782002190, guid: 83fe458d8771cab41b6d0899f9d9f896,

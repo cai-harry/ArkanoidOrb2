@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4051772861863158722}
   - component: {fileID: -2144427175336864044}
   m_Layer: 0
-  m_Name: NormalBlock
+  m_Name: ExplodeBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: edc9575e2d311b44c928c38e2c942643, type: 2}
+  - {fileID: 2100000, guid: 2fef5855ab1ff474d9719e8fb1155989, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,4 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeDelete: 0.05
-  explosionForce: 10
+  explosionForce: 50

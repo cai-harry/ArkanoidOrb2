@@ -8,6 +8,7 @@ public class RockBlock : MonoBehaviour
     public float delayBeforeDelete;
 
     public Material crackedRockMaterial;
+    public float explosionForce;
     
     private int _numHits = 0;
 
@@ -23,6 +24,8 @@ public class RockBlock : MonoBehaviour
             }
             if (_numHits >= HitsToDestroy)
             {
+                var ballRigidBody = other.gameObject.GetComponent<Rigidbody>();
+                ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
                 Invoke("RemoveSelf", delayBeforeDelete);
             }
         }

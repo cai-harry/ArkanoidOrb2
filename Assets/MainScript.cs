@@ -17,6 +17,7 @@ public class MainScript : MonoBehaviour
     public GameObject normalBlock;
     public GameObject rockBlock;
     public GameObject ballBlock;
+    public GameObject explodeBlock;
 
     public AudioSource strikebeamSong;
 
@@ -84,11 +85,15 @@ public class MainScript : MonoBehaviour
     private void AddRandomBlock()
     {
         var randFloat = Random.Range(0f, 1f);
-        if (randFloat < 0.33f)
+        if (randFloat < 0.25f)
+        {
+            InstantiateBlock(explodeBlock);
+        }
+        else if (randFloat < 0.5f)
         {
             InstantiateBlock(ballBlock);
         }
-        else if (randFloat < 0.67f)
+        else if (randFloat < 0.75f)
         {
             InstantiateBlock(rockBlock);
         }
