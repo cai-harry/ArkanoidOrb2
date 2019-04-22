@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 public class MainScript : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class MainScript : MonoBehaviour
     void Start()
     {
         InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
+        strikebeamSong.Play();
+        Pause();
     }
 
     void Update()
@@ -28,6 +32,18 @@ public class MainScript : MonoBehaviour
         {
             TogglePause();
         }
+
+        if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
+        {
+            RestartGame();
+        }
+    }
+
+    private void RestartGame()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
+        Pause();
     }
 
     private void TogglePause()
