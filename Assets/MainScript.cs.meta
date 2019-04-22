@@ -6,6 +6,11 @@ MonoImporter:
   defaultReferences:
   - normalBlock: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
       type: 3}
+  - rockBlock: {fileID: 4051772861863158749, guid: adf54d8f7900b50429e37450065eb9a9,
+      type: 3}
+  - ballBlock: {fileID: 4051772861863158749, guid: 5407446a78a16ba42826f239afc201eb,
+      type: 3}
+  - strikebeamSong: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

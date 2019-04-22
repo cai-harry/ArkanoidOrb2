@@ -20,11 +20,11 @@ public class MainScript : MonoBehaviour
     private void AddRandomBlock()
     {
         var randFloat = Random.Range(0f, 1f);
-        if (randFloat < 0.7f)
+        if (randFloat < 0.33f)
         {
             InstantiateBlock(ballBlock);
         }
-        else if (randFloat < 0.9f)
+        else if (randFloat < 0.67f)
         {
             InstantiateBlock(rockBlock);
         }
