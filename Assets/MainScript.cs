@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class MainScript : MonoBehaviour
 {
+    public GameObject stage;
+    public GameObject paddles;
+    public GameObject ball;
+    
     public float firstBlockSeconds;
     public float addBlockRate;
     public float blockSpaceRadius;
@@ -21,6 +25,10 @@ public class MainScript : MonoBehaviour
 
     void Start()
     {
+        Instantiate(stage);
+        Instantiate(paddles);
+        Instantiate(ball);
+        
         InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
         strikebeamSong.Play();
         Pause();
