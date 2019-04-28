@@ -22,8 +22,9 @@ public class MainScript : MonoBehaviour
     public AudioSource strikebeamSong;
 
     public GameObject pauseScreen;
-    private bool paused;
-
+    
+    private bool _paused;
+    
     void Start()
     {
         Instantiate(stage);
@@ -57,7 +58,7 @@ public class MainScript : MonoBehaviour
 
     private void TogglePause()
     {
-        if (paused)
+        if (_paused)
         {
             Unpause();
             return;
@@ -70,7 +71,7 @@ public class MainScript : MonoBehaviour
     {
         strikebeamSong.Pause();
         Time.timeScale = 0f;
-        paused = true;
+        _paused = true;
         Instantiate(pauseScreen);
     }
 
@@ -78,7 +79,7 @@ public class MainScript : MonoBehaviour
     {
         strikebeamSong.UnPause();
         Time.timeScale = 1f;
-        paused = false;
+        _paused = false;
         Destroy(GameObject.FindWithTag("PauseScreen"));
     }
 
