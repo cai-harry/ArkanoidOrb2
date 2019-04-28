@@ -19,8 +19,10 @@ public class MainScript : MonoBehaviour
     public GameObject ballBlock;
     public GameObject explodeBlock;
 
+    public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
 
+    public GameObject startScreen;
     public GameObject pauseScreen;
     
     private bool _paused;
@@ -32,8 +34,12 @@ public class MainScript : MonoBehaviour
         Instantiate(ball);
         
         InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
+        Time.timeScale = 0f;
+        _paused = true;
+        Instantiate(startScreen);
         strikebeamSong.Play();
-        Pause();
+        strikebeamSong.Pause();
+        blackFlowerSong.Play();
     }
 
     void Update()
@@ -77,6 +83,7 @@ public class MainScript : MonoBehaviour
 
     private void Unpause()
     {
+        blackFlowerSong.Stop();
         strikebeamSong.UnPause();
         Time.timeScale = 1f;
         _paused = false;
