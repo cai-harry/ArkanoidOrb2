@@ -122,4 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 1784785013204505376}
-  startSpeed: 80
+  startSpeed: 50

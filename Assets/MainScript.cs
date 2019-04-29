@@ -29,7 +29,7 @@ public class MainScript : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject winScreen;
 
-    private const int NumLevels = 11;
+    private const int NumLevels = 4;
     
     private bool _paused;
     private int _level;

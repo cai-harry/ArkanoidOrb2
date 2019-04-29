@@ -105,4 +105,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayBeforeDelete: 0.05
-  explosionForce: 50
+  explosionForce: 30
