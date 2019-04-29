@@ -223,9 +223,10 @@ MonoBehaviour:
   stage: {fileID: 4679880167564661774, guid: f87b8e3452b0af8499884f1209dcbf7c, type: 3}
   paddles: {fileID: 737361400437060697, guid: 30430885a80561a4da292fc3aa6546c8, type: 3}
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
-  firstBlockSeconds: 1
-  addBlockRate: 3
+  firstBlockSeconds: 3.75
+  addBlockRate: 3.75
   blockSpaceRadius: 2
+  blocksPerNewLevel: 3
   normalBlock: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
   rockBlock: {fileID: 4051772861863158749, guid: adf54d8f7900b50429e37450065eb9a9,
@@ -240,6 +241,8 @@ MonoBehaviour:
   startScreen: {fileID: 5335307683277769467, guid: e9f0f95484412cb49bc42dcce9a9f675,
     type: 3}
   pauseScreen: {fileID: 7251827140782002190, guid: 83fe458d8771cab41b6d0899f9d9f896,
+    type: 3}
+  winScreen: {fileID: 3579144206437673685, guid: 957f1e524680afe4f9a418d7bea4f351,
     type: 3}
 --- !u!82 &375696800514187116
 AudioSource:

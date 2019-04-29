@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class MainScript : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class MainScript : MonoBehaviour
     public float firstBlockSeconds;
     public float addBlockRate;
     public float blockSpaceRadius;
+    public int blocksPerNewLevel;
 
     public GameObject normalBlock;
     public GameObject rockBlock;
@@ -24,8 +27,28 @@ public class MainScript : MonoBehaviour
 
     public GameObject startScreen;
     public GameObject pauseScreen;
+    public GameObject winScreen;
+
+    private const int NumLevels = 11;
     
     private bool _paused;
+    private int _level;
+    
+    private float[] _levelUpTimes =
+    {
+        0f,
+        17.14f,
+        30.85f,
+        44.57f,
+        58.28f,
+        72.0f,
+        85.71f,
+        99.42f,
+        113.14f,
+        126.85f,
+        140.57f,
+        154.28f,
+    };
     
     void Start()
     {
@@ -34,7 +57,9 @@ public class MainScript : MonoBehaviour
         Instantiate(ball);
         
         InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
+        
         Time.timeScale = 0f;
+        _level = 0;
         _paused = true;
         Instantiate(startScreen);
         strikebeamSong.Play();
@@ -52,6 +77,26 @@ public class MainScript : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
         {
             RestartGame();
+        }
+
+        if (strikebeamSong.time > _levelUpTimes[_level])
+        {
+            ++_level;
+            if (_level > NumLevels)
+            {
+                Time.timeScale = 0f;
+                _paused = true;
+                Instantiate(winScreen);
+            }
+            OnStrikebeamCheckpoint();
+        }
+    }
+
+    private void OnStrikebeamCheckpoint()
+    {
+        for (int i = 0; i < blocksPerNewLevel; i++)
+        {
+            AddBlockCorrespondingToLevel(_level);
         }
     }
 
@@ -92,22 +137,29 @@ public class MainScript : MonoBehaviour
 
     private void AddRandomBlock()
     {
-        var randFloat = Random.Range(0f, 1f);
-        if (randFloat < 0.25f)
+        var blockLevel = Random.Range(1, _level + 1);  // upper bound is exclusive
+        AddBlockCorrespondingToLevel(blockLevel);
+    }
+
+    private void AddBlockCorrespondingToLevel(int level)
+    {
+        switch (level)
         {
-            InstantiateBlock(explodeBlock);
-        }
-        else if (randFloat < 0.5f)
-        {
-            InstantiateBlock(ballBlock);
-        }
-        else if (randFloat < 0.75f)
-        {
-            InstantiateBlock(rockBlock);
-        }
-        else
-        {
-            InstantiateBlock(normalBlock);
+            case 1:
+                InstantiateBlock(normalBlock);
+                break;
+            case 2:
+                InstantiateBlock(rockBlock);
+                break;
+            case 3:
+                InstantiateBlock(ballBlock);
+                break;
+            case 4:
+                InstantiateBlock(explodeBlock);
+                break;
+            default:
+                Debug.Log("No block corresponding to level " + level);
+                break;
         }
     }
 
