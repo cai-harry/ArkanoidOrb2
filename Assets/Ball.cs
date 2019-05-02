@@ -9,6 +9,7 @@ public class Ball : MonoBehaviour
     
     void Start()
     {
+        rigidBody = GetComponent<Rigidbody>();
         rigidBody.AddForce(startSpeed * Vector3.left);
     }
     

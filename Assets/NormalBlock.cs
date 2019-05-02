@@ -20,7 +20,6 @@ public class NormalBlock : MonoBehaviour
 
     protected void PlayDestroyAnimation()
     {
-        Debug.Log("hit");
         anim.Play("BlockDestroy");
         // Animation triggers DestroySelf() on finish
     }
