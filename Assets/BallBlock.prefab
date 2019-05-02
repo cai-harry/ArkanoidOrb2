@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52843970d6d9f243918995603494095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeDelete: 0.05
   explosionForce: 0
+  anim: {fileID: 2992111284830932166}
+  delayBeforeDelete: 0.05
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
 --- !u!1001 &2754858517382822741
 PrefabInstance:
@@ -103,8 +104,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1784785013204505376, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
     - {fileID: 1784785013204505565, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
+    - {fileID: 1784785013204505376, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
     - {fileID: 1784785013204505377, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
 --- !u!1001 &7197246118948315017
@@ -156,6 +157,12 @@ GameObject:
 --- !u!4 &6618893720443092040 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4051772861863158721, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7197246118948315017}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2992111284830932166 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5361496230242292559, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
   m_PrefabInstance: {fileID: 7197246118948315017}
   m_PrefabAsset: {fileID: 0}

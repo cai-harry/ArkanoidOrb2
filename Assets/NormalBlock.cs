@@ -1,21 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class NormalBlock : MonoBehaviour
 {
-    public float delayBeforeDelete;
     public float explosionForce;
-    
-    private void OnCollisionExit(Collision other)
+
+    public Animator anim;
+
+
+    protected virtual void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
             var ballRigidBody = other.gameObject.GetComponent<Rigidbody>();
             ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
-            Invoke("RemoveSelf", delayBeforeDelete);
+            PlayDestroyAnimation();
         }
     }
 
-    private void RemoveSelf()
+    protected void PlayDestroyAnimation()
+    {
+        Debug.Log("hit");
+        anim.Play("BlockDestroy");
+        // Animation triggers DestroySelf() on finish
+    }
+
+    protected virtual void DestroySelf()
     {
         Destroy(gameObject);
     }

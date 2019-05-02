@@ -1,25 +1,26 @@
 ﻿using UnityEngine;
 
-public class BallBlock : MonoBehaviour
+public class BallBlock : NormalBlock
 {
     public float delayBeforeDelete;
-    public float explosionForce;
 
     public GameObject ball;
 
-    private void OnCollisionExit(Collision other)
+    protected override void OnCollisionExit(Collision other)
     {
+        
         if (other.gameObject.CompareTag("Ball"))
         {
             var ballRigidBody = other.gameObject.GetComponent<Rigidbody>();
             ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
-            Instantiate(ball, transform.position, Quaternion.identity);
-            Invoke("RemoveSelf", delayBeforeDelete);
+            PlayDestroyAnimation();
+            DestroySelf();
         }
     }
 
-    private void RemoveSelf()
+    protected override void DestroySelf()
     {
-        Destroy(gameObject);
+        Instantiate(ball, transform.position, Quaternion.identity);
+        base.DestroySelf();
     }
 }

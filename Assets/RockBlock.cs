@@ -1,18 +1,15 @@
 ﻿using UnityEngine;
 
-public class RockBlock : MonoBehaviour
+public class RockBlock : NormalBlock
 {
     
     const int HitsToDestroy = 2;
-
-    public float delayBeforeDelete;
-
+    
     public Material crackedRockMaterial;
-    public float explosionForce;
     
     private int _numHits = 0;
 
-    private void OnCollisionExit(Collision other)
+    protected override void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
@@ -26,13 +23,9 @@ public class RockBlock : MonoBehaviour
             {
                 var ballRigidBody = other.gameObject.GetComponent<Rigidbody>();
                 ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
-                Invoke("RemoveSelf", delayBeforeDelete);
+                PlayDestroyAnimation();
             }
         }
     }
 
-    private void RemoveSelf()
-    {
-        Destroy(gameObject);
-    }
 }

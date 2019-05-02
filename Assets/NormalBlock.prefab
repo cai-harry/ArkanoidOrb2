@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4051772861863158723}
   - component: {fileID: 4051772861863158722}
   - component: {fileID: -2144427175336864044}
+  - component: {fileID: 5361496230242292559}
   m_Layer: 0
   m_Name: NormalBlock
   m_TagString: Untagged
@@ -104,5 +105,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03627493880a26a4cab843289581b632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeDelete: 0.05
+  delayBeforeDelete: 1
   explosionForce: 0
+  anim: {fileID: 5361496230242292559}
+--- !u!95 &5361496230242292559
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051772861863158749}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c297afe3b2328d45848d05e573cdced, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
