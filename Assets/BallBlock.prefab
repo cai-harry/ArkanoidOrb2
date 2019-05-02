@@ -28,6 +28,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakeBall
       objectReference: {fileID: 0}
+    - target: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1784785013204505564, guid: 329a34250d779304db1d0aff3383f39a,
         type: 3}
       propertyPath: m_RootOrder
