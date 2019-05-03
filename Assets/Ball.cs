@@ -23,11 +23,15 @@ public class Ball : MonoBehaviour
         rigidBody.AddForce(startSpeed * Vector3.left);
     }
 
-    private void OnCollisionExit(Collision other)
+    private void OnCollisionEnter(Collision other)
     {
         bounceSound.time = playBounceSoundFrom;
         bounceSound.Play();
-        
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+
         if (other.gameObject.CompareTag("Block"))
         {
             _currentCombo++;
