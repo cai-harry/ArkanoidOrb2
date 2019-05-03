@@ -10,27 +10,35 @@ public class NormalBlock : MonoBehaviour
     public GameObject popupText;
 
 
-    protected virtual void OnCollisionExit(Collision other)
+    private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
-            var go = Instantiate(
-                popupText,
-                transform.position,
-                Quaternion.LookRotation(Camera.main.transform.position - transform.position),
-                transform  // child of this block
-            );
-            go.GetComponent<TextMesh>().text = "x1";
-            Destroy(go, 2f); // destroy after 2 seconds
-            // TODO: refactor above
-
-            var ballRigidBody = other.gameObject.GetComponent<Rigidbody>();
-            ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
-            PlayDestroyAnimation();
+            OnBallCollisionExit(other);
         }
     }
 
-    protected void PlayDestroyAnimation()
+    protected virtual void OnBallCollisionExit(Collision ball)
+    {
+        ShowComboPopup();
+
+        var ballRigidBody = ball.gameObject.GetComponent<Rigidbody>();
+        ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
+        PlayDestroyAnimation();
+    }
+
+    protected void ShowComboPopup()
+    {
+        var go = Instantiate(
+            popupText,
+            transform.position,
+            Quaternion.Euler(0, -90, 0) // TODO: hacky
+        );
+        go.GetComponent<TextMesh>().text = "x1";
+        Destroy(go, 2f); // destroy after 2 seconds
+    }
+
+    protected virtual void PlayDestroyAnimation()
     {
         anim.Play("BlockDestroy");
         // Animation triggers DestroySelf() on finish

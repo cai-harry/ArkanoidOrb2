@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d075b845d4e295941afc9c9c3672112d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeDelete: 0.05
   explosionForce: 0
   anim: {fileID: 7598909564382333893}
+  popupText: {fileID: 6547164952054054727, guid: 348000f2c40250b4e9059cdd05ca4e48,
+    type: 3}
   crackedRockMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
 --- !u!1001 &2527473315227097226
 PrefabInstance:
