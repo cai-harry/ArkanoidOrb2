@@ -7,11 +7,23 @@ public class NormalBlock : MonoBehaviour
 
     public Animator anim;
 
+    public GameObject popupText;
+
 
     protected virtual void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
+            var go = Instantiate(
+                popupText,
+                transform.position,
+                Quaternion.LookRotation(Camera.main.transform.position - transform.position),
+                transform  // child of this block
+            );
+            go.GetComponent<TextMesh>().text = "x1";
+            Destroy(go, 2f); // destroy after 2 seconds
+            // TODO: refactor above
+
             var ballRigidBody = other.gameObject.GetComponent<Rigidbody>();
             ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
             PlayDestroyAnimation();

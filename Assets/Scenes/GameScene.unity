@@ -138,6 +138,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainScript
       objectReference: {fileID: 0}
+    - target: {fileID: 705507994, guid: d911409fc51e3f64596cbe1b0b715ec5, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 705507994, guid: d911409fc51e3f64596cbe1b0b715ec5, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.61e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 705507994, guid: d911409fc51e3f64596cbe1b0b715ec5, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 53552390
+      objectReference: {fileID: 0}
+    - target: {fileID: 705507994, guid: d911409fc51e3f64596cbe1b0b715ec5, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.075646e+11
+      objectReference: {fileID: 0}
     - target: {fileID: 4486086454571962499, guid: d911409fc51e3f64596cbe1b0b715ec5,
         type: 3}
       propertyPath: m_LocalPosition.x
