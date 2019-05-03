@@ -8,6 +8,9 @@ public class Ball : MonoBehaviour
     public Rigidbody rigidBody;
     public float startSpeed;
 
+    public AudioSource bounceSound;
+    public float playBounceSoundFrom;
+    
     public GameObject popupText;
     
     private int _currentCombo;
@@ -22,6 +25,9 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionExit(Collision other)
     {
+        bounceSound.time = playBounceSoundFrom;
+        bounceSound.Play();
+        
         if (other.gameObject.CompareTag("Block"))
         {
             _currentCombo++;
