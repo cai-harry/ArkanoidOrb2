@@ -7,17 +7,12 @@ public class NormalBlock : MonoBehaviour
 
     public Animator anim;
 
-    public GameObject popupText;
-
 
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
             OnBallCollisionExit(other);
-
-            var ballScript = other.gameObject.GetComponent<Ball>();
-            ShowComboPopup(ballScript);
         }
     }
 
@@ -26,18 +21,6 @@ public class NormalBlock : MonoBehaviour
         var ballRigidBody = ball.gameObject.GetComponent<Rigidbody>();
         ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
         PlayDestroyAnimation();
-    }
-
-    protected void ShowComboPopup(Ball ballScript)
-    {
-        var combo = ballScript.GetCurrentCombo();
-        var go = Instantiate(
-            popupText,
-            transform.position,
-            Quaternion.Euler(0, -90, 0) // TODO: hacky
-        );
-        go.GetComponent<TextMesh>().text = $"x{combo}";
-        Destroy(go, 2f); // destroy after 2 seconds
     }
 
     protected virtual void PlayDestroyAnimation()

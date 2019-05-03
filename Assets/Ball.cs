@@ -8,6 +8,8 @@ public class Ball : MonoBehaviour
     public Rigidbody rigidBody;
     public float startSpeed;
 
+    public GameObject popupText;
+    
     private int _currentCombo;
     
     void Start()
@@ -23,6 +25,7 @@ public class Ball : MonoBehaviour
         if (other.gameObject.CompareTag("Block"))
         {
             _currentCombo++;
+            ShowComboPopup();
         }
 
         if (other.gameObject.CompareTag("Paddle"))
@@ -30,12 +33,18 @@ public class Ball : MonoBehaviour
             _currentCombo = 0;
         }
     }
-
-    public int GetCurrentCombo()
-    {
-        return _currentCombo;
-    }
     
+    protected void ShowComboPopup()
+    {
+        var go = Instantiate(
+            popupText,
+            transform.position,
+            Quaternion.Euler(0, -90, 0) // TODO: hacky
+        );
+        go.GetComponent<TextMesh>().text = $"x{_currentCombo}";
+        Destroy(go, 2f); // destroy after 2 seconds
+    }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
