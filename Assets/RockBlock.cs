@@ -11,8 +11,6 @@ public class RockBlock : NormalBlock
 
     protected override void OnBallCollisionExit(Collision ball)
     {
-        ShowComboPopup();
-        
         _numHits++;
         if (_numHits == 1)
         {

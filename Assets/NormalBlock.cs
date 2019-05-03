@@ -15,26 +15,28 @@ public class NormalBlock : MonoBehaviour
         if (other.gameObject.CompareTag("Ball"))
         {
             OnBallCollisionExit(other);
+
+            var ballScript = other.gameObject.GetComponent<Ball>();
+            ShowComboPopup(ballScript);
         }
     }
 
     protected virtual void OnBallCollisionExit(Collision ball)
     {
-        ShowComboPopup();
-
         var ballRigidBody = ball.gameObject.GetComponent<Rigidbody>();
         ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
         PlayDestroyAnimation();
     }
 
-    protected void ShowComboPopup()
+    protected void ShowComboPopup(Ball ballScript)
     {
+        var combo = ballScript.GetCurrentCombo();
         var go = Instantiate(
             popupText,
             transform.position,
             Quaternion.Euler(0, -90, 0) // TODO: hacky
         );
-        go.GetComponent<TextMesh>().text = "x1";
+        go.GetComponent<TextMesh>().text = $"x{combo}";
         Destroy(go, 2f); // destroy after 2 seconds
     }
 

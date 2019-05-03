@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 737361399265326674}
   m_Layer: 0
   m_Name: PaddleL
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 737361400087975826}
   m_Layer: 0
   m_Name: PaddleR
-  m_TagString: Untagged
+  m_TagString: Paddle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
