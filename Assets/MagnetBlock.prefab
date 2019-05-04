@@ -14,11 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionForce: 0
   anim: {fileID: 7018233548600741503}
-  minRepulsion: -0.2
-  maxRepulsion: 0.2
-  magneticRadius: 0
-  popupText: {fileID: 6547164952054054727, guid: 348000f2c40250b4e9059cdd05ca4e48,
-    type: 3}
+  minRepulsion: -1.488
+  maxRepulsion: -1.48
+  magneticRadius: 1
 --- !u!1001 &3099068425878871344
 PrefabInstance:
   m_ObjectHideFlags: 0

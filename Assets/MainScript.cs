@@ -184,7 +184,7 @@ public class MainScript : MonoBehaviour
         switch (level)
         {
             case 1:
-                InstantiateBlock(magnetBlock);
+                InstantiateBlock(normalBlock);
                 break;
             case 2:
                 InstantiateBlock(rockBlock);
