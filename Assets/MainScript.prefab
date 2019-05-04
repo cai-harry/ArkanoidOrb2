@@ -237,6 +237,8 @@ MonoBehaviour:
     type: 3}
   magnetBlock: {fileID: 1385089582697578221, guid: 25c124b326555344787736ba7ffc0665,
     type: 3}
+  factoryBlock: {fileID: 3670522361406350439, guid: 40ee2adc9621e6746aad8c342ae367a9,
+    type: 3}
   blackFlowerSong: {fileID: 5719150619811047240, guid: e9f0f95484412cb49bc42dcce9a9f675,
     type: 3}
   strikebeamSong: {fileID: 375696800514187116}
