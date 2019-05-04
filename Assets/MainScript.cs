@@ -24,6 +24,7 @@ public class MainScript : MonoBehaviour
     public GameObject explodeBlock;
     public GameObject magnetBlock;
     public GameObject factoryBlock;
+    public GameObject squareBlock;
 
     public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
@@ -198,6 +199,9 @@ public class MainScript : MonoBehaviour
                 break;
             case 5:
                 InstantiateBlock(factoryBlock);
+                break;
+            case 11:
+                InstantiateBlock(squareBlock);
                 break;
             default:
                 Debug.Log("No block corresponding to level " + level);

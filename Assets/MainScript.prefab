@@ -239,6 +239,8 @@ MonoBehaviour:
     type: 3}
   factoryBlock: {fileID: 3670522361406350439, guid: 40ee2adc9621e6746aad8c342ae367a9,
     type: 3}
+  squareBlock: {fileID: 8319550924185973444, guid: 184822727f23ca640912195630be88d7,
+    type: 3}
   blackFlowerSong: {fileID: 5719150619811047240, guid: e9f0f95484412cb49bc42dcce9a9f675,
     type: 3}
   strikebeamSong: {fileID: 375696800514187116}
