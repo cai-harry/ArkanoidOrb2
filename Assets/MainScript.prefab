@@ -235,12 +235,12 @@ MonoBehaviour:
     type: 3}
   explodeBlock: {fileID: 8333459912575783102, guid: a1a14e8919de92645bf57e97f6956cc1,
     type: 3}
+  magnetBlock: {fileID: 1385089582697578221, guid: 25c124b326555344787736ba7ffc0665,
+    type: 3}
   blackFlowerSong: {fileID: 5719150619811047240, guid: e9f0f95484412cb49bc42dcce9a9f675,
     type: 3}
   strikebeamSong: {fileID: 375696800514187116}
   gameUI: {fileID: 368034583469209328, guid: 9209b28e90bffb0489fb996652ace77c, type: 3}
-  levelText: {fileID: 368034583469209328, guid: 9209b28e90bffb0489fb996652ace77c,
-    type: 3}
   startScreen: {fileID: 5335307683277769467, guid: e9f0f95484412cb49bc42dcce9a9f675,
     type: 3}
   pauseScreen: {fileID: 7251827140782002190, guid: 83fe458d8771cab41b6d0899f9d9f896,

@@ -22,6 +22,7 @@ public class MainScript : MonoBehaviour
     public GameObject rockBlock;
     public GameObject ballBlock;
     public GameObject explodeBlock;
+    public GameObject magnetBlock;
 
     public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
@@ -42,18 +43,18 @@ public class MainScript : MonoBehaviour
 
     private readonly float[] _levelUpTimes =
     {
-        0f,
-        17.14f,
-        30.85f,
-        44.57f,
-        58.28f,
-        72.0f,
-        85.71f,
-        99.42f,
-        113.14f,
-        126.85f,
-        140.57f,
-        154.28f,
+        0f, // bass
+        17.14f, // drums
+        30.85f, // bing bing
+        44.57f, // synth
+        58.28f, // metal
+        72.0f, // choir
+        85.71f, // bing bing & synth
+        99.42f, // metal 2
+        113.14f, // energy charge
+        126.85f, // electric guitar
+        140.57f, // electric guitar & synth
+        154.28f, // end
     };
 
     void Start()
@@ -183,7 +184,7 @@ public class MainScript : MonoBehaviour
         switch (level)
         {
             case 1:
-                InstantiateBlock(normalBlock);
+                InstantiateBlock(magnetBlock);
                 break;
             case 2:
                 InstantiateBlock(rockBlock);
@@ -192,7 +193,7 @@ public class MainScript : MonoBehaviour
                 InstantiateBlock(ballBlock);
                 break;
             case 4:
-                InstantiateBlock(explodeBlock);
+                InstantiateBlock(magnetBlock);
                 break;
             default:
                 Debug.Log("No block corresponding to level " + level);
