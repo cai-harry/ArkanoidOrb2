@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class MainScript : MonoBehaviour
@@ -11,7 +12,7 @@ public class MainScript : MonoBehaviour
     public GameObject stage;
     public GameObject paddles;
     public GameObject ball;
-    
+
     public float firstBlockSeconds;
     public float addBlockRate;
     public float blockSpaceRadius;
@@ -25,16 +26,21 @@ public class MainScript : MonoBehaviour
     public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
 
+    public GameObject gameUI;
+    
     public GameObject startScreen;
     public GameObject pauseScreen;
     public GameObject winScreen;
 
-    private const int NumLevels = 4;
+    private GameObject _ui;
     
+    private const int NumLevels = 4;
+
     private bool _paused;
     private int _level;
-    
-    private float[] _levelUpTimes =
+    private int _lives;
+
+    private readonly float[] _levelUpTimes =
     {
         0f,
         17.14f,
@@ -49,22 +55,36 @@ public class MainScript : MonoBehaviour
         140.57f,
         154.28f,
     };
-    
+
     void Start()
     {
         Instantiate(stage);
         Instantiate(paddles);
         Instantiate(ball);
-        
-        InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
-        
-        Time.timeScale = 0f;
+
+        _ui = Instantiate(gameUI);
+
+        _lives = 3;
         _level = 0;
+
+        UpdateUI();
+
+        InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
+
+        Time.timeScale = 0f;
         _paused = true;
         Instantiate(startScreen);
         strikebeamSong.Play();
         strikebeamSong.Pause();
         blackFlowerSong.Play();
+    }
+
+    private void UpdateUI()
+    {
+        Text levelText = _ui.transform.Find("LevelText").GetComponent<Text>();
+        Text livesText = _ui.transform.Find("LivesText").GetComponent<Text>();
+        levelText.text = $"Level {_level}";
+        livesText.text = $"{_lives} Lives";
     }
 
     void Update()
@@ -76,19 +96,36 @@ public class MainScript : MonoBehaviour
 
         if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
         {
-            RestartGame();
+            LoseLife();
         }
 
         if (strikebeamSong.time > _levelUpTimes[_level])
         {
             ++_level;
+            UpdateUI();
             if (_level > NumLevels)
             {
                 Time.timeScale = 0f;
                 _paused = true;
                 Instantiate(winScreen);
             }
+
             OnStrikebeamCheckpoint();
+        }
+    }
+
+    private void LoseLife()
+    {
+        --_lives;
+        UpdateUI();
+        if (_lives > 0)
+        {
+            Instantiate(ball);
+            Pause();
+        }
+        else
+        {
+            RestartGame();
         }
     }
 
@@ -137,7 +174,7 @@ public class MainScript : MonoBehaviour
 
     private void AddRandomBlock()
     {
-        var blockLevel = Random.Range(1, _level + 1);  // upper bound is exclusive
+        var blockLevel = Random.Range(1, _level + 1); // upper bound is exclusive
         AddBlockCorrespondingToLevel(blockLevel);
     }
 
