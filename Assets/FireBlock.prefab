@@ -37,6 +37,11 @@ PrefabInstance:
       propertyPath: onFire
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+        type: 3}
+      propertyPath: startOnFire
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6620953751444838869, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
         type: 3}
       propertyPath: EmissionModule.enabled

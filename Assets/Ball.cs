@@ -3,35 +3,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Ball : Flammable
 {
     public Rigidbody rigidBody;
     public float startSpeed;
 
     public AudioSource bounceSound;
     public float playBounceSoundFrom;
-    
+
     public GameObject popupText;
-    
+
     private int _currentCombo;
-    
-    void Start()
+
+    protected override void Start()
     {
-        _currentCombo = 0;
+        base.Start();
         
+        _currentCombo = 0;
+
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.AddForce(startSpeed * Vector3.left);
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected override void OnCollisionEnter(Collision other)
     {
+        base.OnCollisionEnter(other);
         bounceSound.time = playBounceSoundFrom;
         bounceSound.Play();
     }
 
     private void OnCollisionExit(Collision other)
     {
-
         if (other.gameObject.CompareTag("Block"))
         {
             _currentCombo++;
@@ -43,7 +45,7 @@ public class Ball : MonoBehaviour
             _currentCombo = 0;
         }
     }
-    
+
     protected void ShowComboPopup()
     {
         var go = Instantiate(

@@ -1,21 +1,11 @@
 ﻿using System;
 using UnityEngine;
 
-public class NormalBlock : MonoBehaviour
+public class NormalBlock : Flammable
 {
     public float explosionForce;
-    public bool onFire;
 
     public Animator anim;
-
-    private void Start()
-    {
-        if (onFire)
-        {
-            var fireParticleSystem = transform.Find("Fire").GetComponent<ParticleSystem>();
-            fireParticleSystem.Play();
-        }
-    }
 
     private void OnCollisionExit(Collision other)
     {
