@@ -10,8 +10,9 @@ public class MagnetBlock : NormalBlock
 
     private float _repulsionForce;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         _repulsionForce = Random.Range(minRepulsion, maxRepulsion);
     }
 

@@ -14,6 +14,10 @@ public class FlammableFreezable : MonoBehaviour
 
     private ParticleSystem _fireParticleSystem;
     private ParticleSystem _iceParticleSystem;
+    
+    private delegate void Del();
+
+    private Del _collisionExitQueuedCommand;
 
     protected virtual void Start()
     {
@@ -31,67 +35,76 @@ public class FlammableFreezable : MonoBehaviour
         {
             Freeze();
         }
+
+        _collisionExitQueuedCommand = () => { };
     }
 
     protected virtual void OnCollisionEnter(Collision other)
     {
         if (_onFire)
         {
-            other.gameObject.SendMessage("SetOnFire", SendMessageOptions.DontRequireReceiver);
+            other.gameObject.SendMessage("OnCollisionWithFire", SendMessageOptions.DontRequireReceiver);
         }
 
         if (_frozen)
         {
-            other.gameObject.SendMessage("Freeze", SendMessageOptions.DontRequireReceiver);
+            other.gameObject.SendMessage("OnCollisionWithIce", SendMessageOptions.DontRequireReceiver);
         }
     }
 
-    public void SetOnFire()
+    protected virtual void OnCollisionExit(Collision other)
+    {
+        _collisionExitQueuedCommand();
+        _collisionExitQueuedCommand = () => { };
+    }
+
+    public void OnCollisionWithFire()
+    {
+        if (_frozen)
+        {
+            _collisionExitQueuedCommand = Unfreeze;
+            return;
+        }
+
+        _collisionExitQueuedCommand = SetOnFire;
+    }
+
+    private void SetOnFire()
+    {
+        Debug.Log($"Setting {gameObject.name} on fire");
+        _fireParticleSystem.Play();
+        _onFire = true;
+    }
+
+    private void Extinguish()
+    {
+        Debug.Log($"Extinguishing {gameObject.name}");
+        _fireParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        _onFire = false;
+    }
+
+    private void OnCollisionWithIce()
     {
         if (_onFire)
         {
-            return;
-        }
-        
-
-        _fireParticleSystem.Play();
-        _onFire = true;
-        
-        Unfreeze();
-    }
-
-    public void Extinguish()
-    {
-        if (!_onFire)
-        {
+            _collisionExitQueuedCommand = Extinguish;
             return;
         }
 
-        _fireParticleSystem.Stop();
-        _onFire = false;
+        _collisionExitQueuedCommand = Freeze;
     }
 
     private void Freeze()
     {
-        if (_frozen)
-        {
-            return;
-        }
-
+        Debug.Log($"Freezing {gameObject.name}");
         _iceParticleSystem.Play();
         _frozen = true;
-        
-        Extinguish();
     }
 
-    public void Unfreeze()
+    private void Unfreeze()
     {
-        if (!_frozen)
-        {
-            return;
-        }
-
-        _iceParticleSystem.Stop();
+        Debug.Log($"Unfreezing {gameObject.name}");
+        _iceParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         _frozen = false;
     }
 }

@@ -7,8 +7,9 @@ public class NormalBlock : FlammableFreezable
 
     public Animator anim;
 
-    private void OnCollisionExit(Collision other)
+    protected override void OnCollisionExit(Collision other)
     {
+        base.OnCollisionExit(other);
         if (other.gameObject.CompareTag("Ball"))
         {
             OnBallCollisionExit(other);

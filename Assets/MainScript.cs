@@ -189,10 +189,10 @@ public class MainScript : MonoBehaviour
         switch (level)
         {
             case 1:
-                InstantiateBlock(iceBlock);
+                InstantiateBlock(normalBlock);
                 break;
             case 2:
-                InstantiateBlock(fireBlock);
+                InstantiateBlock(rockBlock);
                 break;
             case 3:
                 InstantiateBlock(ballBlock);
@@ -205,6 +205,9 @@ public class MainScript : MonoBehaviour
                 break;
             case 6:
                 InstantiateBlock(fireBlock);
+                break;
+            case 7:
+                InstantiateBlock(iceBlock);
                 break;
             case 11:
                 InstantiateBlock(squareBlock);

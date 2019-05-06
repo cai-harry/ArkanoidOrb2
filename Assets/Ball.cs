@@ -32,8 +32,9 @@ public class Ball : FlammableFreezable
         bounceSound.Play();
     }
 
-    private void OnCollisionExit(Collision other)
+    protected override void OnCollisionExit(Collision other)
     {
+        base.OnCollisionExit(other);
         if (other.gameObject.CompareTag("Block"))
         {
             _currentCombo++;
