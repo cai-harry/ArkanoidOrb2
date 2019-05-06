@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class NormalBlock : Flammable
+public class NormalBlock : FlammableFreezable
 {
     public float explosionForce;
 

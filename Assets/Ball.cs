@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ball : Flammable
+public class Ball : FlammableFreezable
 {
     public Rigidbody rigidBody;
     public float startSpeed;

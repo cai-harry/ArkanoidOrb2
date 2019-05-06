@@ -26,6 +26,7 @@ public class MainScript : MonoBehaviour
     public GameObject factoryBlock;
     public GameObject squareBlock;
     public GameObject fireBlock;
+    public GameObject iceBlock;
 
     public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
@@ -188,10 +189,10 @@ public class MainScript : MonoBehaviour
         switch (level)
         {
             case 1:
-                InstantiateBlock(fireBlock);
+                InstantiateBlock(iceBlock);
                 break;
             case 2:
-                InstantiateBlock(rockBlock);
+                InstantiateBlock(fireBlock);
                 break;
             case 3:
                 InstantiateBlock(ballBlock);
