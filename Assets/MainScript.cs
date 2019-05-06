@@ -25,23 +25,25 @@ public class MainScript : MonoBehaviour
     public GameObject magnetBlock;
     public GameObject factoryBlock;
     public GameObject squareBlock;
+    public GameObject fireBlock;
 
     public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
 
     public GameObject gameUI;
-    
+
     public GameObject startScreen;
     public GameObject pauseScreen;
     public GameObject winScreen;
 
     private GameObject _ui;
-    
+
     private const int NumLevels = 11;
 
     private bool _paused;
     private int _level;
     private int _lives;
+
 
     private readonly float[] _levelUpTimes =
     {
@@ -186,7 +188,7 @@ public class MainScript : MonoBehaviour
         switch (level)
         {
             case 1:
-                InstantiateBlock(normalBlock);
+                InstantiateBlock(fireBlock);
                 break;
             case 2:
                 InstantiateBlock(rockBlock);
@@ -199,6 +201,9 @@ public class MainScript : MonoBehaviour
                 break;
             case 5:
                 InstantiateBlock(factoryBlock);
+                break;
+            case 6:
+                InstantiateBlock(fireBlock);
                 break;
             case 11:
                 InstantiateBlock(squareBlock);
