@@ -18,7 +18,7 @@ public class Ball : FlammableFreezable
     protected override void Start()
     {
         base.Start();
-        
+
         _currentCombo = 0;
 
         rigidBody = GetComponent<Rigidbody>();
@@ -37,25 +37,61 @@ public class Ball : FlammableFreezable
         base.OnCollisionExit(other);
         if (other.gameObject.CompareTag("Block"))
         {
-            _currentCombo++;
-            ShowComboPopup();
+            OnBlockCollisionExit();
         }
 
         if (other.gameObject.CompareTag("Paddle"))
         {
-            _currentCombo = 0;
+            OnPaddleCollisionExit();
         }
     }
 
-    protected void ShowComboPopup()
+    private void OnBlockCollisionExit()
     {
-        var go = Instantiate(
+        if (onFire)
+        {
+            _currentCombo += 2;
+        }
+        else if (!frozen)
+        {
+            _currentCombo++;
+        }
+
+        ShowComboPopup();
+    }
+
+    private void OnPaddleCollisionExit()
+    {
+        if (onFire || frozen)
+        {
+            ShowComboPopup();
+            return;
+        }
+
+        _currentCombo = 0;
+    }
+
+    private void ShowComboPopup()
+    {
+        var comboPopup = Instantiate(
             popupText,
             transform.position,
             Quaternion.Euler(0, -90, 0) // TODO: hacky
         );
-        go.GetComponent<TextMesh>().text = $"x{_currentCombo}";
-        Destroy(go, 2f); // destroy after 2 seconds
+        var comboTextBox = comboPopup.GetComponent<TextMesh>();
+        comboTextBox.text = $"x{_currentCombo}";
+
+        if (onFire)
+        {
+            comboTextBox.color = Color.red;
+        }
+
+        if (frozen)
+        {
+            comboTextBox.color = Color.blue;
+        }
+
+        Destroy(comboPopup, 2f); // destroy after 2 seconds
     }
 
     private void OnBecameInvisible()

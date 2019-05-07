@@ -23,8 +23,9 @@ public class GlassGrenadeBlock : RockBlock
         blockLight.intensity = lightIntensityOnHit;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         blockLight.intensity -= lightIntensityDecreaseRate * Time.deltaTime;
         if (blockLight.intensity < baseLightIntensity)
         {

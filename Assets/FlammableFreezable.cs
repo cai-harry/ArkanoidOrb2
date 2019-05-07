@@ -12,8 +12,8 @@ public class FlammableFreezable : MonoBehaviour
     public float maxTimeOnFire;
     public float maxTimeFrozen;
 
-    private bool _onFire;
-    private bool _frozen;
+    protected bool onFire;
+    protected bool frozen;
 
     private float _lastTimeSetOnFire;
     private float _lastTimeFrozen;
@@ -27,8 +27,8 @@ public class FlammableFreezable : MonoBehaviour
 
     protected virtual void Start()
     {
-        _onFire = false;
-        _frozen = false;
+        onFire = false;
+        frozen = false;
         _fireParticleSystem = transform.Find("Fire").GetComponent<ParticleSystem>();
         _iceParticleSystem = transform.Find("Ice").GetComponent<ParticleSystem>();
 
@@ -47,12 +47,12 @@ public class FlammableFreezable : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (_onFire && Time.time - _lastTimeSetOnFire > maxTimeOnFire)
+        if (onFire && Time.time - _lastTimeSetOnFire > maxTimeOnFire)
         {
             Extinguish();
         }
 
-        if (_frozen && Time.time - _lastTimeFrozen > maxTimeFrozen)
+        if (frozen && Time.time - _lastTimeFrozen > maxTimeFrozen)
         {
             Unfreeze();
         }
@@ -60,12 +60,12 @@ public class FlammableFreezable : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision other)
     {
-        if (_onFire)
+        if (onFire)
         {
             other.gameObject.SendMessage("OnCollisionWithFire", SendMessageOptions.DontRequireReceiver);
         }
 
-        if (_frozen)
+        if (frozen)
         {
             other.gameObject.SendMessage("OnCollisionWithIce", SendMessageOptions.DontRequireReceiver);
         }
@@ -79,7 +79,7 @@ public class FlammableFreezable : MonoBehaviour
 
     public void OnCollisionWithFire()
     {
-        if (_frozen)
+        if (frozen)
         {
             _collisionExitQueuedCommand = Unfreeze;
             return;
@@ -92,7 +92,7 @@ public class FlammableFreezable : MonoBehaviour
     {
         Debug.Log($"Setting {gameObject.name} on fire");
         _fireParticleSystem.Play();
-        _onFire = true;
+        onFire = true;
         _lastTimeSetOnFire = Time.time;
     }
 
@@ -100,12 +100,12 @@ public class FlammableFreezable : MonoBehaviour
     {
         Debug.Log($"Extinguishing {gameObject.name}");
         _fireParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        _onFire = false;
+        onFire = false;
     }
 
     private void OnCollisionWithIce()
     {
-        if (_onFire)
+        if (onFire)
         {
             _collisionExitQueuedCommand = Extinguish;
             return;
@@ -118,7 +118,7 @@ public class FlammableFreezable : MonoBehaviour
     {
         Debug.Log($"Freezing {gameObject.name}");
         _iceParticleSystem.Play();
-        _frozen = true;
+        frozen = true;
         _lastTimeFrozen = Time.time;
     }
 
@@ -126,6 +126,6 @@ public class FlammableFreezable : MonoBehaviour
     {
         Debug.Log($"Unfreezing {gameObject.name}");
         _iceParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
-        _frozen = false;
+        frozen = false;
     }
 }
