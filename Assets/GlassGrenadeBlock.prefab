@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 831493838762127558}
+  m_Father: {fileID: 3724695483956613985}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &4491919902162642007
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831493838762127510}
+  m_GameObject: {fileID: 3724695483956614013}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5d4f6b0c6927e749a9e3a4c8006ba65, type: 3}
@@ -105,14 +105,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnFire: 0
   startFrozen: 0
+  maxTimeOnFire: 0
+  maxTimeFrozen: 0
   explosionForce: 0
-  anim: {fileID: 831493838762127367}
+  anim: {fileID: 4750685554984068079}
   HitsToDestroy: 5
   crackedRockMaterial: {fileID: 2100000, guid: 9c174883bcdbfe649adc87257a759f58, type: 2}
   blockLight: {fileID: 4491919902162642007}
-  baseLightIntensity: 0.1
-  lightIntensityOnHit: 10
-  lightIntensityDecreaseRate: 2
+  baseLightIntensity: 1
+  lightIntensityOnHit: 100
+  lightIntensityDecreaseRate: 30
 --- !u!1001 &831493838762127520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,19 +155,19 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
---- !u!1 &831493838762127510 stripped
+--- !u!1 &3724695483956614013 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
   m_PrefabInstance: {fileID: 831493838762127520}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &831493838762127558 stripped
+--- !u!4 &3724695483956613985 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4051772861863158721, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
   m_PrefabInstance: {fileID: 831493838762127520}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &831493838762127367 stripped
+--- !u!95 &4750685554984068079 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5361496230242292559, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
