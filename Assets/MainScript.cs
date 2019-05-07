@@ -9,14 +9,13 @@ using Random = UnityEngine.Random;
 
 public class MainScript : MonoBehaviour
 {
-    public GameObject stage;
-    public GameObject paddles;
-    public GameObject ball;
-
+    
     public float firstBlockSeconds;
     public float addBlockRate;
     public float blockSpaceRadius;
     public int blocksPerNewLevel;
+    
+    public GameObject ball;
 
     public GameObject normalBlock;
     public GameObject rockBlock;
@@ -66,10 +65,6 @@ public class MainScript : MonoBehaviour
 
     void Start()
     {
-        Instantiate(stage);
-        Instantiate(paddles);
-        Instantiate(ball);
-
         _ui = Instantiate(gameUI);
 
         _lives = 3;
@@ -248,6 +243,6 @@ public class MainScript : MonoBehaviour
             block.transform.position.y,
             blockSpaceRadius * randomUnitCirclePosition.y
         );
-        Instantiate(block, startPosition, Quaternion.identity);
+        Instantiate(block, startPosition, Quaternion.identity, transform);
     }
 }
