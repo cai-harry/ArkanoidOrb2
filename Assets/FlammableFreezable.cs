@@ -9,8 +9,14 @@ public class FlammableFreezable : MonoBehaviour
     public bool startOnFire;
     public bool startFrozen;
 
+    public float maxTimeOnFire;
+    public float maxTimeFrozen;
+
     private bool _onFire;
     private bool _frozen;
+
+    private float _lastTimeSetOnFire;
+    private float _lastTimeFrozen;
 
     private ParticleSystem _fireParticleSystem;
     private ParticleSystem _iceParticleSystem;
@@ -37,6 +43,19 @@ public class FlammableFreezable : MonoBehaviour
         }
 
         _collisionExitQueuedCommand = () => { };
+    }
+
+    protected virtual void Update()
+    {
+        if (_onFire && Time.time - _lastTimeSetOnFire > maxTimeOnFire)
+        {
+            Extinguish();
+        }
+
+        if (_frozen && Time.time - _lastTimeFrozen > maxTimeFrozen)
+        {
+            Unfreeze();
+        }
     }
 
     protected virtual void OnCollisionEnter(Collision other)
@@ -74,6 +93,7 @@ public class FlammableFreezable : MonoBehaviour
         Debug.Log($"Setting {gameObject.name} on fire");
         _fireParticleSystem.Play();
         _onFire = true;
+        _lastTimeSetOnFire = Time.time;
     }
 
     private void Extinguish()
@@ -99,6 +119,7 @@ public class FlammableFreezable : MonoBehaviour
         Debug.Log($"Freezing {gameObject.name}");
         _iceParticleSystem.Play();
         _frozen = true;
+        _lastTimeFrozen = Time.time;
     }
 
     private void Unfreeze()

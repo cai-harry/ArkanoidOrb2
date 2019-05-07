@@ -126,6 +126,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnFire: 0
   startFrozen: 0
+  maxTimeOnFire: Infinity
+  maxTimeFrozen: Infinity
   rigidBody: {fileID: 1784785013204505376}
   startSpeed: 50
   bounceSound: {fileID: 3685478479587152882}

@@ -109,6 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnFire: 0
   startFrozen: 0
+  maxTimeOnFire: Infinity
+  maxTimeFrozen: Infinity
   explosionForce: 0
   anim: {fileID: 5361496230242292559}
 --- !u!95 &5361496230242292559

@@ -108,6 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnFire: 0
   startFrozen: 0
+  maxTimeOnFire: 5
+  maxTimeFrozen: 5
 --- !u!1001 &8891922718387604
 PrefabInstance:
   m_ObjectHideFlags: 0
