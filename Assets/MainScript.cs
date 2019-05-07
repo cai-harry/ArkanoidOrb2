@@ -102,6 +102,19 @@ public class MainScript : MonoBehaviour
             TogglePause();
         }
 
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            strikebeamSong.time = _levelUpTimes[_level];
+        }
+
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            strikebeamSong.time = _levelUpTimes[_level - 2];
+            --_level;
+            UpdateUI();
+            OnStrikebeamCheckpoint();
+        }
+
         if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
         {
             LoseLife();
