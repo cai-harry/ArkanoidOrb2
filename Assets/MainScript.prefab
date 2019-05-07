@@ -229,6 +229,8 @@ MonoBehaviour:
   blocksPerNewLevel: 3
   mainLight: {fileID: 705507994}
   initialMainLightIntensity: 1.6
+  initialMainLightColor: {r: 0.92156863, g: 0.99215686, b: 1, a: 0}
+  eventualMainLightColor: {r: 1, g: 0.74592763, b: 0.5424528, a: 0}
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
   normalBlock: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}

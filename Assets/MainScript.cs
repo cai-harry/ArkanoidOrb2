@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 
 public class MainScript : MonoBehaviour
 {
-    
     public float firstBlockSeconds;
     public float addBlockRate;
     public float blockSpaceRadius;
@@ -17,6 +16,8 @@ public class MainScript : MonoBehaviour
 
     public Light mainLight;
     public float initialMainLightIntensity;
+    public Color initialMainLightColor;
+    public Color eventualMainLightColor;
 
     public GameObject ball;
 
@@ -132,8 +133,11 @@ public class MainScript : MonoBehaviour
             OnStrikebeamCheckpoint();
         }
 
-        var lightMultiplier = 1 - strikebeamSong.time / strikebeamSong.clip.length;
+        var lightMultiplier = Mathf.Clamp(
+            1 - strikebeamSong.time / strikebeamSong.clip.length,
+            0f, 1f);
         mainLight.intensity = initialMainLightIntensity * lightMultiplier;
+        mainLight.color = Color.Lerp(eventualMainLightColor, initialMainLightColor, lightMultiplier);
     }
 
     private void LoseLife()
