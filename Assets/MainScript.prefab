@@ -41,8 +41,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 9
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.9198113, g: 0.9904381, b: 1, a: 1}
+  m_Intensity: 1.6
   m_Range: 50
   m_SpotAngle: 51
   m_InnerSpotAngle: 21.80208
@@ -227,6 +227,8 @@ MonoBehaviour:
   addBlockRate: 3.75
   blockSpaceRadius: 2
   blocksPerNewLevel: 3
+  mainLight: {fileID: 705507994}
+  initialMainLightIntensity: 1.6
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
   normalBlock: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}

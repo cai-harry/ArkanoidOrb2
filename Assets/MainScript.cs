@@ -14,7 +14,10 @@ public class MainScript : MonoBehaviour
     public float addBlockRate;
     public float blockSpaceRadius;
     public int blocksPerNewLevel;
-    
+
+    public Light mainLight;
+    public float initialMainLightIntensity;
+
     public GameObject ball;
 
     public GameObject normalBlock;
@@ -128,6 +131,9 @@ public class MainScript : MonoBehaviour
 
             OnStrikebeamCheckpoint();
         }
+
+        var lightMultiplier = 1 - strikebeamSong.time / strikebeamSong.clip.length;
+        mainLight.intensity = initialMainLightIntensity * lightMultiplier;
     }
 
     private void LoseLife()
