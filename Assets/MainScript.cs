@@ -27,6 +27,8 @@ public class MainScript : MonoBehaviour
     public GameObject squareBlock;
     public GameObject fireBlock;
     public GameObject iceBlock;
+    public GameObject questionBlock;
+    public GameObject glassGrenadeBlock;
 
     public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
@@ -209,7 +211,13 @@ public class MainScript : MonoBehaviour
             case 7:
                 InstantiateBlock(iceBlock);
                 break;
-            case 11:
+            case 8:
+                InstantiateBlock(questionBlock);
+                break;
+            case 9:
+                InstantiateBlock(glassGrenadeBlock);
+                break;
+            case 10:
                 InstantiateBlock(squareBlock);
                 break;
             default:

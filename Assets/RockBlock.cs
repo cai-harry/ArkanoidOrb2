@@ -3,7 +3,7 @@
 public class RockBlock : NormalBlock
 {
     
-    const int HitsToDestroy = 2;
+    public int HitsToDestroy;
     
     public Material crackedRockMaterial;
     
