@@ -100,7 +100,7 @@ public class MainScript : MonoBehaviour
         {
             return;
         }
-        
+
         if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
         {
             RespawnOrDie();
@@ -112,7 +112,7 @@ public class MainScript : MonoBehaviour
         }
 
         var lightMultiplier = Mathf.Clamp(
-            1 - strikebeamSong.time / strikebeamSong.clip.length,
+            1 - strikebeamSong.time / _levelUpTimes[NumLevels],
             0f, 1f);
         mainLight.intensity = initialMainLightIntensity * lightMultiplier;
         mainLight.color = Color.Lerp(eventualMainLightColor, initialMainLightColor, lightMultiplier);
@@ -213,7 +213,7 @@ public class MainScript : MonoBehaviour
         }
         else if (!_gameOver)
         {
-            Pause(gameOverScreen);
+            Pause(gameOverScreen, true);
             _gameOver = true;
         }
     }
@@ -229,8 +229,8 @@ public class MainScript : MonoBehaviour
 
         if (_level > NumLevels)
         {
+            Pause(winScreen, false);
             _gameOver = true;
-            Pause(winScreen);
         }
     }
 
@@ -252,12 +252,16 @@ public class MainScript : MonoBehaviour
 
     private void Pause()
     {
-        Pause(pauseScreen);
+        Pause(pauseScreen, true);
     }
 
-    private void Pause(GameObject pauseScreenType)
+    private void Pause(GameObject pauseScreenType, bool pauseMusic)
     {
-        strikebeamSong.Pause();
+        if (pauseMusic)
+        {
+            strikebeamSong.Pause();
+        }
+
         Time.timeScale = 0f;
         _paused = true;
         Instantiate(pauseScreenType);
@@ -267,7 +271,7 @@ public class MainScript : MonoBehaviour
     {
         Time.timeScale = 1f;
         _paused = false;
-        
+
         if (_gameOver)
         {
             LoadMenuScene();
