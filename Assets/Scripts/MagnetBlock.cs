@@ -22,8 +22,9 @@ public class MagnetBlock : NormalBlock
         _lightningVelocity = lightning.velocityOverLifetime;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         List<GameObject> ballsInRange = new List<GameObject>();
         foreach (var ball in GameObject.FindGameObjectsWithTag("Ball"))
         {

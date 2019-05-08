@@ -33,14 +33,14 @@ public class MainScript : MonoBehaviour
     public GameObject questionBlock;
     public GameObject glassGrenadeBlock;
 
-    public AudioSource blackFlowerSong;
     public AudioSource strikebeamSong;
 
     public GameObject gameUI;
 
-    public GameObject startScreen;
     public GameObject pauseScreen;
     public GameObject winScreen;
+    public GameObject gameOverScreen;
+    public string menuSceneName;
 
     private GameObject _ui;
 
@@ -49,6 +49,8 @@ public class MainScript : MonoBehaviour
     private bool _paused;
     private int _level;
     private int _lives;
+
+    private bool _gameOver;
 
 
     private readonly float[] _levelUpTimes =
@@ -73,17 +75,13 @@ public class MainScript : MonoBehaviour
 
         _lives = 3;
         _level = 0;
+        _gameOver = false;
 
         UpdateUI();
 
         InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
 
-        Time.timeScale = 0f;
-        _paused = true;
-        Instantiate(startScreen);
         strikebeamSong.Play();
-        strikebeamSong.Pause();
-        blackFlowerSong.Play();
     }
 
     private void UpdateUI()
@@ -98,9 +96,14 @@ public class MainScript : MonoBehaviour
     {
         KeyUpHandlers();
 
+        if (_gameOver)
+        {
+            return;
+        }
+        
         if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
         {
-            LoseLife();
+            RespawnOrDie();
         }
 
         if (strikebeamSong.time > _levelUpTimes[_level])
@@ -181,6 +184,14 @@ public class MainScript : MonoBehaviour
         {
             SkipToLevel(10);
         }
+
+        if (Input.GetKeyUp(KeyCode.Delete))
+        {
+            foreach (var ball in GameObject.FindGameObjectsWithTag("Ball"))
+            {
+                Destroy(ball);
+            }
+        }
     }
 
     private void SkipToLevel(int level)
@@ -191,18 +202,19 @@ public class MainScript : MonoBehaviour
         strikebeamSong.time = _levelUpTimes[level - 1];
     }
 
-    private void LoseLife()
+    private void RespawnOrDie()
     {
-        --_lives;
-        UpdateUI();
         if (_lives > 0)
         {
-            Instantiate(ball);
+            --_lives;
+            UpdateUI();
             Pause();
+            Instantiate(ball);
         }
-        else
+        else if (!_gameOver)
         {
-            RestartGame();
+            Pause(gameOverScreen);
+            _gameOver = true;
         }
     }
 
@@ -214,19 +226,17 @@ public class MainScript : MonoBehaviour
         {
             AddBlockCorrespondingToLevel(_level);
         }
+
         if (_level > NumLevels)
         {
-            Time.timeScale = 0f;
-            _paused = true;
-            Instantiate(winScreen);
+            _gameOver = true;
+            Pause(winScreen);
         }
     }
 
-    private void RestartGame()
+    private void LoadMenuScene()
     {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-        Pause();
+        SceneManager.LoadScene(menuSceneName);
     }
 
     private void TogglePause()
@@ -242,15 +252,25 @@ public class MainScript : MonoBehaviour
 
     private void Pause()
     {
+        Pause(pauseScreen);
+    }
+
+    private void Pause(GameObject pauseScreenType)
+    {
         strikebeamSong.Pause();
         Time.timeScale = 0f;
         _paused = true;
-        Instantiate(pauseScreen);
+        Instantiate(pauseScreenType);
     }
 
     private void Unpause()
     {
-        blackFlowerSong.Stop();
+        if (_gameOver)
+        {
+            LoadMenuScene();
+            return;
+        }
+
         strikebeamSong.UnPause();
         Time.timeScale = 1f;
         _paused = false;

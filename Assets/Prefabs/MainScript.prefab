@@ -253,16 +253,15 @@ MonoBehaviour:
     type: 3}
   glassGrenadeBlock: {fileID: 3724695483956614013, guid: f38b0f5f28e41e2438378aa5a983f8d5,
     type: 3}
-  blackFlowerSong: {fileID: 5719150619811047240, guid: e9f0f95484412cb49bc42dcce9a9f675,
-    type: 3}
   strikebeamSong: {fileID: 375696800514187116}
   gameUI: {fileID: 368034583469209328, guid: 9209b28e90bffb0489fb996652ace77c, type: 3}
-  startScreen: {fileID: 5335307683277769467, guid: e9f0f95484412cb49bc42dcce9a9f675,
-    type: 3}
   pauseScreen: {fileID: 7251827140782002190, guid: 83fe458d8771cab41b6d0899f9d9f896,
     type: 3}
   winScreen: {fileID: 3579144206437673685, guid: 957f1e524680afe4f9a418d7bea4f351,
     type: 3}
+  gameOverScreen: {fileID: 5335307683277769467, guid: e9f0f95484412cb49bc42dcce9a9f675,
+    type: 3}
+  menuSceneName: MenuScene
 --- !u!82 &375696800514187116
 AudioSource:
   m_ObjectHideFlags: 0
