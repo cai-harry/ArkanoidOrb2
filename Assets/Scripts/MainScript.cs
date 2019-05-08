@@ -265,6 +265,9 @@ public class MainScript : MonoBehaviour
 
     private void Unpause()
     {
+        Time.timeScale = 1f;
+        _paused = false;
+        
         if (_gameOver)
         {
             LoadMenuScene();
@@ -272,8 +275,6 @@ public class MainScript : MonoBehaviour
         }
 
         strikebeamSong.UnPause();
-        Time.timeScale = 1f;
-        _paused = false;
         Destroy(GameObject.FindWithTag("PauseScreen"));
     }
 
