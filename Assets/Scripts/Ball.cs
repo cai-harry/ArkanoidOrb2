@@ -12,7 +12,10 @@ public class Ball : FlammableFreezable
     public float playBounceSoundFrom;
 
     public GameObject popupText;
+    public ParticleSystem lightning;
+    public Vector3 lightningVelocityMultiplier;
 
+    private ParticleSystem.VelocityOverLifetimeModule _lightningVelocity;
     private int _currentCombo;
 
     protected override void Start()
@@ -23,6 +26,8 @@ public class Ball : FlammableFreezable
 
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.AddForce(startSpeed * Vector3.left);
+
+        _lightningVelocity = lightning.velocityOverLifetime;
     }
 
     protected override void OnCollisionEnter(Collision other)
@@ -44,6 +49,14 @@ public class Ball : FlammableFreezable
         {
             OnPaddleCollisionExit();
         }
+    }
+
+    private void DisplayElectric(Vector3 positionDeltaToBlock)
+    {
+        lightning.Play();
+        _lightningVelocity.x = lightningVelocityMultiplier.x * positionDeltaToBlock.x;
+        _lightningVelocity.y = lightningVelocityMultiplier.y * positionDeltaToBlock.y;
+        _lightningVelocity.z = lightningVelocityMultiplier.z * positionDeltaToBlock.z;
     }
 
     private void OnBlockCollisionExit()
