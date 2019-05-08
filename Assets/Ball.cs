@@ -62,7 +62,7 @@ public class Ball : FlammableFreezable
 
     private void OnPaddleCollisionExit()
     {
-        if (onFire || frozen)
+        if (frozen)
         {
             ShowComboPopup();
             return;
