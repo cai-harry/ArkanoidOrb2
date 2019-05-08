@@ -96,23 +96,7 @@ public class MainScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            TogglePause();
-        }
-
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            strikebeamSong.time = _levelUpTimes[_level];
-        }
-
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            strikebeamSong.time = _levelUpTimes[_level - 2];
-            --_level;
-            UpdateUI();
-            OnStrikebeamCheckpoint();
-        }
+        KeyUpHandlers();
 
         if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
         {
@@ -121,15 +105,6 @@ public class MainScript : MonoBehaviour
 
         if (strikebeamSong.time > _levelUpTimes[_level])
         {
-            ++_level;
-            UpdateUI();
-            if (_level > NumLevels)
-            {
-                Time.timeScale = 0f;
-                _paused = true;
-                Instantiate(winScreen);
-            }
-
             OnStrikebeamCheckpoint();
         }
 
@@ -138,6 +113,82 @@ public class MainScript : MonoBehaviour
             0f, 1f);
         mainLight.intensity = initialMainLightIntensity * lightMultiplier;
         mainLight.color = Color.Lerp(eventualMainLightColor, initialMainLightColor, lightMultiplier);
+    }
+
+    private void KeyUpHandlers()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            TogglePause();
+        }
+
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            SkipToLevel(_level + 1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            SkipToLevel(_level - 1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            SkipToLevel(1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            SkipToLevel(2);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            SkipToLevel(3);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            SkipToLevel(4);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha5))
+        {
+            SkipToLevel(5);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha6))
+        {
+            SkipToLevel(6);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha7))
+        {
+            SkipToLevel(7);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha8))
+        {
+            SkipToLevel(8);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha9))
+        {
+            SkipToLevel(9);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Alpha0))
+        {
+            SkipToLevel(10);
+        }
+    }
+
+    private void SkipToLevel(int level)
+    {
+        // go to the instance just before a level-up
+        // the next frame, the game levels up to the desired level.
+        _level = level - 1;
+        strikebeamSong.time = _levelUpTimes[level - 1];
     }
 
     private void LoseLife()
@@ -157,9 +208,17 @@ public class MainScript : MonoBehaviour
 
     private void OnStrikebeamCheckpoint()
     {
+        ++_level;
+        UpdateUI();
         for (int i = 0; i < blocksPerNewLevel; i++)
         {
             AddBlockCorrespondingToLevel(_level);
+        }
+        if (_level > NumLevels)
+        {
+            Time.timeScale = 0f;
+            _paused = true;
+            Instantiate(winScreen);
         }
     }
 
