@@ -125,82 +125,97 @@ public class MainScript : MonoBehaviour
 
     private void KeyUpHandlers()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Return))
         {
             TogglePause();
         }
 
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+        if (_paused)
         {
-            SkipToLevel(_level + 1);
-        }
-
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            SkipToLevel(_level - 1);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha1))
-        {
-            SkipToLevel(1);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha2))
-        {
-            SkipToLevel(2);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha3))
-        {
-            SkipToLevel(3);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha4))
-        {
-            SkipToLevel(4);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha5))
-        {
-            SkipToLevel(5);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha6))
-        {
-            SkipToLevel(6);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha7))
-        {
-            SkipToLevel(7);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha8))
-        {
-            SkipToLevel(8);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha9))
-        {
-            SkipToLevel(9);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Alpha0))
-        {
-            SkipToLevel(10);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Delete))
-        {
-            foreach (var ball in GameObject.FindGameObjectsWithTag("Ball"))
+            if (Input.GetKeyUp(KeyCode.M))
             {
-                Destroy(ball);
+                LoadMenuScene();
+            }
+
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                Application.Quit();
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.Insert))
+        else
         {
-            Instantiate(ball);
+            if (Input.GetKeyUp(KeyCode.UpArrow))
+            {
+                SkipToLevel(_level + 1);
+            }
+
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                SkipToLevel(_level - 1);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha1))
+            {
+                SkipToLevel(1);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha2))
+            {
+                SkipToLevel(2);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha3))
+            {
+                SkipToLevel(3);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha4))
+            {
+                SkipToLevel(4);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha5))
+            {
+                SkipToLevel(5);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha6))
+            {
+                SkipToLevel(6);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha7))
+            {
+                SkipToLevel(7);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha8))
+            {
+                SkipToLevel(8);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha9))
+            {
+                SkipToLevel(9);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Alpha0))
+            {
+                SkipToLevel(10);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Delete))
+            {
+                foreach (var ball in GameObject.FindGameObjectsWithTag("Ball"))
+                {
+                    Destroy(ball);
+                }
+            }
+
+            if (Input.GetKeyUp(KeyCode.Insert))
+            {
+                Instantiate(ball);
+            }
         }
     }
 
@@ -248,6 +263,7 @@ public class MainScript : MonoBehaviour
 
     private void LoadMenuScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(menuSceneName);
     }
 
@@ -281,14 +297,14 @@ public class MainScript : MonoBehaviour
 
     private void Unpause()
     {
-        Time.timeScale = 1f;
-        _paused = false;
-
         if (_gameOver)
         {
             LoadMenuScene();
             return;
         }
+
+        Time.timeScale = 1f;
+        _paused = false;
 
         strikebeamSong.UnPause();
         Destroy(GameObject.FindWithTag("PauseScreen"));

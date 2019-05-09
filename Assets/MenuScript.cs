@@ -12,6 +12,11 @@ public class MenuScript : MonoBehaviour
         {
             LoadGameScene();
         }
+
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.Q))
+        {
+            Application.Quit();
+        }
     }
 
     private void LoadGameScene()
