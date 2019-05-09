@@ -21,7 +21,7 @@ public class RockBlock : NormalBlock
         {
             var ballRigidBody = ball.gameObject.GetComponent<Rigidbody>();
             ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
-            PlayDestroyAnimation();
+            OnBlockDestroyed();
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,9 @@ public class MainScript : MonoBehaviour
     public float initialMainLightIntensity;
     public Color initialMainLightColor;
     public Color eventualMainLightColor;
+
+    public int blockRingNumBlocks;
+    public int blockRingRadius;
 
     public GameObject ball;
 
@@ -42,7 +46,9 @@ public class MainScript : MonoBehaviour
     public GameObject gameOverScreen;
     public string menuSceneName;
 
+
     private GameObject _ui;
+    private List<GameObject> _blocksInPlay;
 
     private const int NumLevels = 11;
 
@@ -72,6 +78,7 @@ public class MainScript : MonoBehaviour
     void Start()
     {
         _ui = Instantiate(gameUI);
+        _blocksInPlay = new List<GameObject>();
 
         _lives = 3;
         _level = 0;
@@ -79,7 +86,7 @@ public class MainScript : MonoBehaviour
 
         UpdateUI();
 
-        InvokeRepeating("AddRandomBlock", firstBlockSeconds, addBlockRate);
+        InvokeRepeating(nameof(InstantiateBlock), firstBlockSeconds, addBlockRate);
 
         strikebeamSong.Play();
     }
@@ -192,6 +199,11 @@ public class MainScript : MonoBehaviour
                 Destroy(ball);
             }
         }
+
+        if (Input.GetKeyUp(KeyCode.Insert))
+        {
+            Instantiate(ball);
+        }
     }
 
     private void SkipToLevel(int level)
@@ -224,7 +236,7 @@ public class MainScript : MonoBehaviour
         UpdateUI();
         for (int i = 0; i < blocksPerNewLevel; i++)
         {
-            AddBlockCorrespondingToLevel(_level);
+            InstantiateBlock(GetBlockTypeByLevel(_level));
         }
 
         if (_level > NumLevels)
@@ -282,61 +294,122 @@ public class MainScript : MonoBehaviour
         Destroy(GameObject.FindWithTag("PauseScreen"));
     }
 
-    private void AddRandomBlock()
-    {
-        var blockLevel = Random.Range(1, _level + 1); // upper bound is exclusive
-        AddBlockCorrespondingToLevel(blockLevel);
-    }
-
-    private void AddBlockCorrespondingToLevel(int level)
+    private GameObject GetBlockTypeByLevel(int level)
     {
         switch (level)
         {
             case 1:
-                InstantiateBlock(normalBlock);
-                break;
+                return normalBlock;
             case 2:
-                InstantiateBlock(rockBlock);
-                break;
+                return rockBlock;
             case 3:
-                InstantiateBlock(ballBlock);
-                break;
+                return ballBlock;
             case 4:
-                InstantiateBlock(magnetBlock);
-                break;
+                return magnetBlock;
             case 5:
-                InstantiateBlock(factoryBlock);
-                break;
+                return factoryBlock;
             case 6:
-                InstantiateBlock(fireBlock);
-                break;
+                return fireBlock;
             case 7:
-                InstantiateBlock(iceBlock);
-                break;
+                return iceBlock;
             case 8:
-                InstantiateBlock(questionBlock);
-                break;
+                return questionBlock;
             case 9:
-                InstantiateBlock(glassGrenadeBlock);
-                break;
+                return glassGrenadeBlock;
             case 10:
-                InstantiateBlock(squareBlock);
-                break;
+                return squareBlock;
             default:
-                Debug.Log("No block corresponding to level " + level);
-                break;
+                Debug.LogError("No block corresponding to level " + level);
+                return null;
         }
     }
 
-    private void InstantiateBlock(GameObject block)
+    private Vector3 GetRandomPositionInBlockSpace()
     {
         // TODO: don't instantiate on top of other blocks or balls
         var randomUnitCirclePosition = Random.insideUnitCircle;
-        var startPosition = new Vector3(
+        return new Vector3(
             blockSpaceRadius * randomUnitCirclePosition.x,
-            block.transform.position.y,
+            normalBlock.transform.position.y, // TODO: hacky
             blockSpaceRadius * randomUnitCirclePosition.y
         );
-        Instantiate(block, startPosition, Quaternion.identity, transform);
+    }
+
+    private void InstantiateBlock()
+    {
+        var blockLevel = Random.Range(1, _level + 1); // upper bound is exclusive
+        var blockType = GetBlockTypeByLevel(blockLevel);
+        InstantiateBlock(blockType);
+    }
+
+    private void InstantiateBlock(GameObject blockType)
+    {
+        var blockPosition = GetRandomPositionInBlockSpace();
+        InstantiateBlock(blockType, blockPosition);
+    }
+
+    private void InstantiateBlock(Vector3 blockPosition)
+    {
+        var blockLevel = Random.Range(1, _level + 1); // upper bound is exclusive
+        var blockType = GetBlockTypeByLevel(blockLevel);
+        InstantiateBlock(blockType, blockPosition);
+    }
+
+    private void InstantiateBlock(GameObject blockType, Vector3 position)
+    {
+        var newBlock = Instantiate(blockType, position, Quaternion.identity, transform);
+        _blocksInPlay.Add(newBlock);
+    }
+
+    private void InstantiateBlockRing(Vector3 centre)
+    {
+        for (int i = 0; i < blockRingNumBlocks; i++)
+        {
+            var angle = 2 * Mathf.PI * i / blockRingNumBlocks;
+            var offsetDirection = new Vector3(
+                Mathf.Sin(angle),
+                0,
+                Mathf.Cos(angle)
+            );
+            var offset = offsetDirection * blockRingRadius;
+            var position = transform.position + offset;
+
+            if (position.magnitude < blockSpaceRadius)
+            {
+                InstantiateBlock(normalBlock, position);
+            }
+        }
+    }
+
+    public void ShuffleBlockTypes()
+    {
+        List<Vector3> oldBlockPositions = new List<Vector3>();
+        foreach (var block in _blocksInPlay)
+        {
+            // TODO: I do it like this because I want to copy block.transform.position but there's surely a better way
+            var blockPosition = block.transform.position;
+            oldBlockPositions.Add(
+                new Vector3(
+                    blockPosition.x,
+                    blockPosition.y,
+                    blockPosition.z
+                )
+            );
+        }
+
+        foreach (var block in _blocksInPlay)
+        {
+            block.SendMessage("OnBlockDestroyed");
+        }
+
+        foreach (var oldPosition in oldBlockPositions)
+        {
+            InstantiateBlock(oldPosition);
+        }
+    }
+
+    public void RemoveFromBlocksInPlay(GameObject block)
+    {
+        _blocksInPlay.Remove(block);
     }
 }

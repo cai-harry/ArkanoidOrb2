@@ -6,9 +6,21 @@ public class BallBlock : NormalBlock
 
     public GameObject ball;
 
-    protected override void DestroySelf()
+    private bool _ballReleased;
+
+    protected override void Start()
     {
-        Instantiate(ball, transform.position, Quaternion.identity);
-        base.DestroySelf();
+        base.Start();
+        _ballReleased = false;
+    }
+
+    protected override void OnBlockDestroyed()
+    {
+        base.OnBlockDestroyed();
+        if (!_ballReleased)
+        {
+            Instantiate(ball, transform.position, Quaternion.identity);
+            _ballReleased = true;
+        }
     }
 }

@@ -7,6 +7,14 @@ public class NormalBlock : FlammableFreezable
 
     public Animator anim;
 
+    private Collider _collider;
+
+    protected override void Start()
+    {
+        base.Start();
+        _collider = gameObject.GetComponent<Collider>();
+    }
+
     protected override void OnCollisionExit(Collision other)
     {
         base.OnCollisionExit(other);
@@ -20,17 +28,19 @@ public class NormalBlock : FlammableFreezable
     {
         var ballRigidBody = ball.gameObject.GetComponent<Rigidbody>();
         ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
-        PlayDestroyAnimation();
+        OnBlockDestroyed();
     }
 
-    protected virtual void PlayDestroyAnimation()
+    protected virtual void OnBlockDestroyed()
     {
+        // _collider.enabled = false;
         anim.Play("BlockDestroy");
         // Animation triggers DestroySelf() on finish
     }
 
     protected virtual void DestroySelf()
     {
-        Destroy(gameObject);
+        var mainScript = transform.parent.gameObject.GetComponent<MainScript>();
+        mainScript.RemoveFromBlocksInPlay(gameObject);
     }
 }

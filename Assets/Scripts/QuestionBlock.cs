@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionBlock : RockBlock
+public class QuestionBlock : NormalBlock
 {
     protected override void OnBallCollisionExit(Collision ball)
     {
+        var mainScript = transform.parent.gameObject.GetComponent<MainScript>();
+        mainScript.ShuffleBlockTypes();
         base.OnBallCollisionExit(ball);
-
-        DoRandomThing();
     }
 
-    private void DoRandomThing()
-    {
-        Debug.Log("Need to decide what this does");
-    }
 }
