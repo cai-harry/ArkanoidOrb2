@@ -1,13 +1,30 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestionBlock : NormalBlock
 {
-    protected override void OnBallCollisionExit(Collision ball)
+    public GameObject ball;
+
+    public int numBallsReleased;
+
+    private bool _ballsReleased;
+
+    protected override void Start()
     {
-        SendMessageUpwards("InstantiateBlockRing", Vector3.zero);
-        base.OnBallCollisionExit(ball);
+        base.Start();
+        _ballsReleased = false;
     }
 
+    protected override void OnBlockDestroyed()
+    {
+        base.OnBlockDestroyed();
+        if (!_ballsReleased)
+        {
+            var newBall = Instantiate(ball, transform.position, Quaternion.identity);
+            newBall.SendMessage("SetOnFire");
+            _ballsReleased = true;
+        }
+    }
 }

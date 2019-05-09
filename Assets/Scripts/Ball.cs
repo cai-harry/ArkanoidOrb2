@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Ball : FlammableFreezable
 {
@@ -25,7 +26,10 @@ public class Ball : FlammableFreezable
         _currentCombo = 0;
 
         rigidBody = GetComponent<Rigidbody>();
-        rigidBody.AddForce(startSpeed * Vector3.left);
+
+        var initialDirection = Random.insideUnitSphere;
+        
+        rigidBody.AddForce(startSpeed * initialDirection);
 
         _lightningVelocity = lightning.velocityOverLifetime;
     }

@@ -7,11 +7,6 @@ public class NormalBlock : FlammableFreezable
 
     public Animator anim;
 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
     protected override void OnCollisionExit(Collision other)
     {
         base.OnCollisionExit(other);
@@ -30,7 +25,6 @@ public class NormalBlock : FlammableFreezable
 
     protected virtual void OnBlockDestroyed()
     {
-        // _collider.enabled = false;
         anim.Play("BlockDestroy");
         // Animation triggers DestroySelf() on finish
     }

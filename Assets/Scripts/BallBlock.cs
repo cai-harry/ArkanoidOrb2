@@ -2,8 +2,6 @@
 
 public class BallBlock : NormalBlock
 {
-    public float delayBeforeDelete;
-
     public GameObject ball;
 
     private bool _ballReleased;
