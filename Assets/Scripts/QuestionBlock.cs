@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionBlock : NormalBlock
+public class QuestionBlock : RockBlock
 {
     public GameObject ball;
 
@@ -22,8 +22,11 @@ public class QuestionBlock : NormalBlock
         base.OnBlockDestroyed();
         if (!_ballsReleased)
         {
-            var newBall = Instantiate(ball, transform.position, Quaternion.identity);
-            newBall.SendMessage("SetOnFire");
+            for (int i = 0; i < numBallsReleased; i++)
+            {
+                Vector3 offset = i * ball.transform.localScale.y * Vector3.up;
+                Instantiate(ball, transform.position + offset, Quaternion.identity);
+            }
             _ballsReleased = true;
         }
     }

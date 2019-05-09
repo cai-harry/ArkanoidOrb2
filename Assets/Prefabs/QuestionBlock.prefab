@@ -18,8 +18,10 @@ MonoBehaviour:
   maxTimeFrozen: 0
   explosionForce: 0
   anim: {fileID: 3468599044806051593}
+  HitsToDestroy: 2
+  crackedRockMaterial: {fileID: 2100000, guid: 05485a231ba7e414da318d7767866263, type: 2}
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
-  numBallsReleased: 5
+  numBallsReleased: 10
 --- !u!1 &5715094973319874528
 GameObject:
   m_ObjectHideFlags: 0
