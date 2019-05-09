@@ -21,7 +21,7 @@ public class MainScript : MonoBehaviour
     public Color eventualMainLightColor;
 
     public int blockRingNumBlocks;
-    public int blockRingRadius;
+    public float blockRingRadius;
 
     public GameObject ball;
 
@@ -48,7 +48,6 @@ public class MainScript : MonoBehaviour
 
 
     private GameObject _ui;
-    private List<GameObject> _blocksInPlay;
 
     private const int NumLevels = 11;
 
@@ -78,7 +77,6 @@ public class MainScript : MonoBehaviour
     void Start()
     {
         _ui = Instantiate(gameUI);
-        _blocksInPlay = new List<GameObject>();
 
         _lives = 3;
         _level = 0;
@@ -358,7 +356,6 @@ public class MainScript : MonoBehaviour
     private void InstantiateBlock(GameObject blockType, Vector3 position)
     {
         var newBlock = Instantiate(blockType, position, Quaternion.identity, transform);
-        _blocksInPlay.Add(newBlock);
     }
 
     private void InstantiateBlockRing(Vector3 centre)
@@ -372,7 +369,7 @@ public class MainScript : MonoBehaviour
                 Mathf.Cos(angle)
             );
             var offset = offsetDirection * blockRingRadius;
-            var position = transform.position + offset;
+            var position = centre + offset;
 
             if (position.magnitude < blockSpaceRadius)
             {
@@ -381,35 +378,4 @@ public class MainScript : MonoBehaviour
         }
     }
 
-    public void ShuffleBlockTypes()
-    {
-        List<Vector3> oldBlockPositions = new List<Vector3>();
-        foreach (var block in _blocksInPlay)
-        {
-            // TODO: I do it like this because I want to copy block.transform.position but there's surely a better way
-            var blockPosition = block.transform.position;
-            oldBlockPositions.Add(
-                new Vector3(
-                    blockPosition.x,
-                    blockPosition.y,
-                    blockPosition.z
-                )
-            );
-        }
-
-        foreach (var block in _blocksInPlay)
-        {
-            block.SendMessage("OnBlockDestroyed");
-        }
-
-        foreach (var oldPosition in oldBlockPositions)
-        {
-            InstantiateBlock(oldPosition);
-        }
-    }
-
-    public void RemoveFromBlocksInPlay(GameObject block)
-    {
-        _blocksInPlay.Remove(block);
-    }
 }

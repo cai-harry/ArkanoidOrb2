@@ -6,8 +6,7 @@ public class QuestionBlock : NormalBlock
 {
     protected override void OnBallCollisionExit(Collision ball)
     {
-        var mainScript = transform.parent.gameObject.GetComponent<MainScript>();
-        mainScript.ShuffleBlockTypes();
+        SendMessageUpwards("InstantiateBlockRing", Vector3.zero);
         base.OnBallCollisionExit(ball);
     }
 

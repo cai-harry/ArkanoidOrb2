@@ -5,10 +5,9 @@ using UnityEngine;
 
 public class FactoryBlock : NormalBlock
 {
-    public GameObject normalBlock;
-
     protected override void OnBallCollisionExit(Collision ball)
     {
+        Debug.Log("Sending Message Upwards");
         SendMessageUpwards("InstantiateBlockRing", transform.position);
         base.OnBallCollisionExit(ball);
     }

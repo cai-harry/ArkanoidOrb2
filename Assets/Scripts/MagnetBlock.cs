@@ -12,14 +12,12 @@ public class MagnetBlock : NormalBlock
     public ParticleSystem lightning;
     public Vector3 lightningVelocityMultiplier;
 
-    private ParticleSystem.VelocityOverLifetimeModule _lightningVelocity;
     private float _repulsionForce;
 
     protected override void Start()
     {
         base.Start();
         _repulsionForce = Random.Range(minRepulsion, maxRepulsion);
-        _lightningVelocity = lightning.velocityOverLifetime;
     }
 
     protected override void Update()
@@ -36,22 +34,23 @@ public class MagnetBlock : NormalBlock
             }
         }
 
+        var lightningVelocity = lightning.velocityOverLifetime;
         if (ballsInRange.Count > 0)
         {
             var ball = ChooseRandomFrom(ballsInRange);
             var positionDeltaToBall = ball.transform.position - transform.position;
-            _lightningVelocity.x =
+            lightningVelocity.x =
                 lightningVelocityMultiplier.x * positionDeltaToBall.x / ball.transform.localScale.x;
-            _lightningVelocity.y =
+            lightningVelocity.y =
                 lightningVelocityMultiplier.y * positionDeltaToBall.y / ball.transform.localScale.y;
-            _lightningVelocity.z =
+            lightningVelocity.z =
                 lightningVelocityMultiplier.z * positionDeltaToBall.z / ball.transform.localScale.z;
         }
         else
         {
-            _lightningVelocity.x = 0;
-            _lightningVelocity.y = 0;
-            _lightningVelocity.z = 0;
+            lightningVelocity.x = 0;
+            lightningVelocity.y = 0;
+            lightningVelocity.z = 0;
         }
     }
 
