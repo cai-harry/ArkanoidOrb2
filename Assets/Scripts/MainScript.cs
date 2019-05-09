@@ -232,15 +232,17 @@ public class MainScript : MonoBehaviour
     {
         ++_level;
         UpdateUI();
-        for (int i = 0; i < blocksPerNewLevel; i++)
-        {
-            InstantiateBlock(GetBlockTypeByLevel(_level));
-        }
 
         if (_level > NumLevels)
         {
             Pause(winScreen, false);
             _gameOver = true;
+            return;
+        }
+
+        for (int i = 0; i < blocksPerNewLevel; i++)
+        {
+            InstantiateBlock(GetBlockTypeByLevel(_level));
         }
     }
 
@@ -377,5 +379,4 @@ public class MainScript : MonoBehaviour
             }
         }
     }
-
 }
