@@ -90,7 +90,6 @@ public class FlammableFreezable : MonoBehaviour
 
     private void SetOnFire()
     {
-        Debug.Log($"Setting {gameObject.name} on fire");
         _fireParticleSystem.Play();
         onFire = true;
         _lastTimeSetOnFire = Time.time;
@@ -98,7 +97,6 @@ public class FlammableFreezable : MonoBehaviour
 
     private void Extinguish()
     {
-        Debug.Log($"Extinguishing {gameObject.name}");
         _fireParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         onFire = false;
     }
@@ -116,7 +114,6 @@ public class FlammableFreezable : MonoBehaviour
 
     private void Freeze()
     {
-        Debug.Log($"Freezing {gameObject.name}");
         _iceParticleSystem.Play();
         frozen = true;
         _lastTimeFrozen = Time.time;
@@ -124,7 +121,6 @@ public class FlammableFreezable : MonoBehaviour
 
     private void Unfreeze()
     {
-        Debug.Log($"Unfreezing {gameObject.name}");
         _iceParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         frozen = false;
     }
