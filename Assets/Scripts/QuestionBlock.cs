@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestionBlock : RockBlock
+public class QuestionBlock : MultiHitBlock
 {
     public GameObject ball;
 

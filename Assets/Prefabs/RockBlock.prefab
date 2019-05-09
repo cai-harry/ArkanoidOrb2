@@ -6,7 +6,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2527473315227097276}
+  m_GameObject: {fileID: 1957282866262457175}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d075b845d4e295941afc9c9c3672112d, type: 3}
@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnFire: 0
   startFrozen: 0
+  maxTimeOnFire: 0
+  maxTimeFrozen: 0
   explosionForce: 0
-  anim: {fileID: 2527473315227097133}
-  HitsToDestroy: 2
-  crackedRockMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
+  anim: {fileID: 7598909564382333893}
+  secondMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
 --- !u!1001 &2527473315227097226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58,13 +59,13 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
---- !u!1 &2527473315227097276 stripped
+--- !u!1 &1957282866262457175 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
   m_PrefabInstance: {fileID: 2527473315227097226}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &2527473315227097133 stripped
+--- !u!95 &7598909564382333893 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5361496230242292559, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}

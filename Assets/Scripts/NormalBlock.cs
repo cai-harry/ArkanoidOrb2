@@ -18,13 +18,12 @@ public class NormalBlock : FlammableFreezable
 
     protected virtual void OnBallCollisionExit(Collision ball)
     {
-        var ballRigidBody = ball.gameObject.GetComponent<Rigidbody>();
-        ballRigidBody.AddExplosionForce(explosionForce, transform.position, 1f);
         OnBlockDestroyed();
     }
 
     protected virtual void OnBlockDestroyed()
     {
+        // TODO: add force field of strength ExplosionForce
         anim.Play("BlockDestroy");
         // Animation triggers DestroySelf() on finish
     }

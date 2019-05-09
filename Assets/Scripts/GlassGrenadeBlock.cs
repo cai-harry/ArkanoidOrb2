@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlassGrenadeBlock : RockBlock
+public class GlassGrenadeBlock : MultiHitBlock
 {
     public Light blockLight;
 
@@ -17,9 +17,34 @@ public class GlassGrenadeBlock : RockBlock
         ResetLightIntensity();
     }
 
-    protected override void OnBallCollisionExit(Collision ball)
+    protected override void OnNthBallCollisionExit(int n)
     {
-        base.OnBallCollisionExit(ball);
+        switch (n)
+        {
+            case 1:
+                SetToLightIntensityOnHit();
+                break;
+            case 2:
+                SetToLightIntensityOnHit();
+                break;
+            case 3:
+                SetToLightIntensityOnHit();
+                break;
+            case 4:
+                ResetLightIntensity();
+                ChangeMaterial(secondMaterial);
+                break;
+            case 5:
+                OnBlockDestroyed();
+                break;
+            default:
+                Debug.LogError($"Invalid ball collision number on {gameObject.name}");
+                break;
+        }
+    }
+
+    private void SetToLightIntensityOnHit()
+    {
         blockLight.intensity = lightIntensityOnHit;
     }
 

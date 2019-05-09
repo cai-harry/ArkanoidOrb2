@@ -109,8 +109,7 @@ MonoBehaviour:
   maxTimeFrozen: 0
   explosionForce: 0
   anim: {fileID: 4750685554984068079}
-  HitsToDestroy: 5
-  crackedRockMaterial: {fileID: 2100000, guid: 9c174883bcdbfe649adc87257a759f58, type: 2}
+  secondMaterial: {fileID: 2100000, guid: 9c174883bcdbfe649adc87257a759f58, type: 2}
   blockLight: {fileID: 4491919902162642007}
   baseLightIntensity: 1
   lightIntensityOnHit: 100
@@ -151,7 +150,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 9c174883bcdbfe649adc87257a759f58, type: 2}
+      objectReference: {fileID: 2100000, guid: 6693469031900d74891b97d9a5dbd418, type: 2}
     m_RemovedComponents:
     - {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
