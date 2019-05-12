@@ -16,12 +16,16 @@ public class Ball : FlammableFreezable
     public ParticleSystem lightning;
     public Vector3 lightningVelocityMultiplier;
 
+    private MainScript _mainScript;
+    
     private ParticleSystem.VelocityOverLifetimeModule _lightningVelocity;
     private int _currentCombo;
 
     protected override void Start()
     {
         base.Start();
+
+        _mainScript = GameObject.FindObjectOfType<MainScript>();
 
         _currentCombo = 0;
 
@@ -100,6 +104,8 @@ public class Ball : FlammableFreezable
         }
 
         ShowComboPopup();
+
+        _mainScript.IncreaseScore(1, _currentCombo);
     }
 
     private void OnPaddleCollisionExit()

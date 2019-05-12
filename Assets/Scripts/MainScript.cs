@@ -58,6 +58,7 @@ public class MainScript : MonoBehaviour
     private bool _paused;
     private int _level;
     private int _lives;
+    private int _score;
 
     private bool _gameOver;
 
@@ -85,6 +86,7 @@ public class MainScript : MonoBehaviour
         _lives = 3;
         _level = 0;
         _gameOver = false;
+        _score = 0;
 
         UpdateUI();
 
@@ -95,10 +97,13 @@ public class MainScript : MonoBehaviour
 
     private void UpdateUI()
     {
+        // TODO: make these textboxes automatically update when the variables change
         Text levelText = _ui.transform.Find("LevelText").GetComponent<Text>();
         Text livesText = _ui.transform.Find("LivesText").GetComponent<Text>();
+        Text scoreText = _ui.transform.Find("ScoreText").GetComponent<Text>();
         levelText.text = $"Level {_level}";
         livesText.text = $"{_lives} Lives";
+        scoreText.text = $"{_score} Points";
     }
 
     void Update()
@@ -410,5 +415,11 @@ public class MainScript : MonoBehaviour
                 InstantiateBlock(normalBlock, position);
             }
         }
+    }
+
+    public void IncreaseScore(int numPoints, int combo)
+    {
+        _score += numPoints * combo;
+        UpdateUI();
     }
 }
