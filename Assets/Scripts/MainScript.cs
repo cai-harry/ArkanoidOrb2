@@ -15,6 +15,9 @@ public class MainScript : MonoBehaviour
     public float blockSpaceRadius;
     public int blocksPerNewLevel;
 
+    public float maxSpeedUp;
+    public float minSlowDown;
+
     public Light mainLight;
     public float initialMainLightIntensity;
     public Color initialMainLightColor;
@@ -147,12 +150,20 @@ public class MainScript : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.UpArrow))
             {
-                SkipToLevel(_level + 1);
+                var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
+                foreach (var ball in ballsInPlay)
+                {
+                   ball.SendMessage("SpeedUp", maxSpeedUp);
+                }
             }
 
             if (Input.GetKeyUp(KeyCode.DownArrow))
             {
-                SkipToLevel(_level - 1);
+                var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
+                foreach (var ball in ballsInPlay)
+                {
+                    ball.SendMessage("SlowDown", minSlowDown);
+                }
             }
 
             if (Input.GetKeyUp(KeyCode.Alpha1))

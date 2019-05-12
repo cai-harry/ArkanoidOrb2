@@ -28,7 +28,7 @@ public class Ball : FlammableFreezable
         rigidBody = GetComponent<Rigidbody>();
 
         var initialDirection = Random.insideUnitSphere;
-        
+
         rigidBody.AddForce(startSpeed * initialDirection);
 
         _lightningVelocity = lightning.velocityOverLifetime;
@@ -53,6 +53,31 @@ public class Ball : FlammableFreezable
         {
             OnPaddleCollisionExit();
         }
+    }
+
+    public void SpeedUp(float toSpeed)
+    {
+        if (rigidBody.velocity.magnitude >= toSpeed)
+        {
+            return;
+        }
+
+        ChangeSpeed(toSpeed);
+    }
+
+    public void SlowDown(float toSpeed)
+    {
+        if (rigidBody.velocity.magnitude <= toSpeed)
+        {
+            return;
+        }
+
+        ChangeSpeed(toSpeed);
+    }
+
+    private void ChangeSpeed(float toSpeed)
+    {
+        rigidBody.velocity = toSpeed * rigidBody.velocity.normalized;
     }
 
     private void DisplayElectric(Vector3 positionDeltaToBlock)

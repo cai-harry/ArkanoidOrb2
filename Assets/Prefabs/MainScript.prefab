@@ -227,6 +227,8 @@ MonoBehaviour:
   addBlockRate: 3.75
   blockSpaceRadius: 2
   blocksPerNewLevel: 3
+  maxSpeedUp: 2
+  minSlowDown: 1
   mainLight: {fileID: 705507994}
   initialMainLightIntensity: 1.6
   initialMainLightColor: {r: 0.92156863, g: 0.99215686, b: 1, a: 0}
