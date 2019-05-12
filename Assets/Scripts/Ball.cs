@@ -15,6 +15,8 @@ public class Ball : FlammableFreezable
     public GameObject popupText;
     public ParticleSystem lightning;
     public Vector3 lightningVelocityMultiplier;
+    public ParticleSystem sparks;
+    public float sparksEmissionRate;
 
     private MainScript _mainScript;
     
@@ -43,11 +45,22 @@ public class Ball : FlammableFreezable
         base.OnCollisionEnter(other);
         bounceSound.time = playBounceSoundFrom;
         bounceSound.Play();
+        PlaySparks();
+    }
+
+    private void PlaySparks()
+    {
+        var sparksMain = sparks.main;
+        sparksMain.startSpeed = rigidBody.velocity.magnitude;
+        var sparksEmission = sparks.emission;
+        sparksEmission.rateOverTime = sparksEmissionRate * rigidBody.velocity.magnitude;
+        sparks.Play();
     }
 
     protected override void OnCollisionExit(Collision other)
     {
         base.OnCollisionExit(other);
+        
         if (other.gameObject.CompareTag("Block"))
         {
             OnBlockCollisionExit();
@@ -89,6 +102,7 @@ public class Ball : FlammableFreezable
 
     private void ChangeSpeed(float toSpeed)
     {
+        PlaySparks();
         rigidBody.velocity = toSpeed * rigidBody.velocity.normalized;
     }
 
