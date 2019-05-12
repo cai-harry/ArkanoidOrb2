@@ -75,17 +75,17 @@ public class Ball : FlammableFreezable
         ChangeSpeed(toSpeed);
     }
 
-    private void ChangeSpeed(float toSpeed)
-    {
-        rigidBody.velocity = toSpeed * rigidBody.velocity.normalized;
-    }
-
-    private void DisplayElectric(Vector3 positionDeltaToBlock)
+    public void DisplayElectric(Vector3 positionDeltaToBlock)
     {
         lightning.Play();
         _lightningVelocity.x = lightningVelocityMultiplier.x * positionDeltaToBlock.x;
         _lightningVelocity.y = lightningVelocityMultiplier.y * positionDeltaToBlock.y;
         _lightningVelocity.z = lightningVelocityMultiplier.z * positionDeltaToBlock.z;
+    }
+
+    private void ChangeSpeed(float toSpeed)
+    {
+        rigidBody.velocity = toSpeed * rigidBody.velocity.normalized;
     }
 
     private void OnBlockCollisionExit()

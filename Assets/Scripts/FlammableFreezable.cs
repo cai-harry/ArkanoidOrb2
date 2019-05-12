@@ -20,7 +20,7 @@ public class FlammableFreezable : MonoBehaviour
 
     private ParticleSystem _fireParticleSystem;
     private ParticleSystem _iceParticleSystem;
-    
+
     private delegate void Del();
 
     private Del _collisionExitQueuedCommand;
@@ -60,14 +60,17 @@ public class FlammableFreezable : MonoBehaviour
 
     protected virtual void OnCollisionEnter(Collision other)
     {
+        var otherFlammableFreezableScript = other.gameObject.GetComponent<FlammableFreezable>();
+        if (!otherFlammableFreezableScript) return;
+
         if (onFire)
         {
-            other.gameObject.SendMessage("OnCollisionWithFire", SendMessageOptions.DontRequireReceiver);
+            otherFlammableFreezableScript.OnCollisionWithFire();
         }
 
         if (frozen)
         {
-            other.gameObject.SendMessage("OnCollisionWithIce", SendMessageOptions.DontRequireReceiver);
+            otherFlammableFreezableScript.OnCollisionWithIce();
         }
     }
 

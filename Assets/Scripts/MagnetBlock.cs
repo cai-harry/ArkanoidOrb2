@@ -30,7 +30,8 @@ public class MagnetBlock : NormalBlock
             if (positionDeltaToBall.magnitude < magneticRadius)
             {
                 ballsInRange.Add(ball);
-                ball.SendMessage("DisplayElectric", -positionDeltaToBall);
+                var ballScript = ball.GetComponent<Ball>();
+                ballScript.DisplayElectric(-positionDeltaToBall);
             }
         }
 

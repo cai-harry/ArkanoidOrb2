@@ -153,7 +153,8 @@ public class MainScript : MonoBehaviour
                 var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
                 foreach (var ball in ballsInPlay)
                 {
-                   ball.SendMessage("SpeedUp", maxSpeedUp);
+                    var ballScript = ball.GetComponent<Ball>();
+                    ballScript.SpeedUp(maxSpeedUp);
                 }
             }
 
@@ -162,7 +163,8 @@ public class MainScript : MonoBehaviour
                 var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
                 foreach (var ball in ballsInPlay)
                 {
-                    ball.SendMessage("SlowDown", minSlowDown);
+                    var ballScript = ball.GetComponent<Ball>();
+                    ballScript.SlowDown(minSlowDown);
                 }
             }
 
@@ -390,7 +392,7 @@ public class MainScript : MonoBehaviour
         var newBlock = Instantiate(blockType, position, Quaternion.identity, transform);
     }
 
-    private void InstantiateBlockRing(Vector3 centre)
+    public void InstantiateBlockRing(Vector3 centre)
     {
         for (int i = 0; i < blockRingNumBlocks; i++)
         {
