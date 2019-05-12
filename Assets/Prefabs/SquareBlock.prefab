@@ -13,6 +13,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5780546169949480370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8319550924185973444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a783212c774bc4943873e06674281779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOnFire: 0
+  startFrozen: 0
+  maxTimeOnFire: 0
+  maxTimeFrozen: 0
+  explosionForce: 0
+  anim: {fileID: 83860739545842262}
+  MinSpinSpeed: -7.2
+  MaxSpinSpeed: 7.2
+  SpinningFromStart: 0
 --- !u!1001 &5426330194196255001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50,12 +71,24 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4051772861863158723, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42325bd13c33aa74ca346bf88d331c44, type: 2}
     m_RemovedComponents:
     - {fileID: 4051772861863158722, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
+    - {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
 --- !u!1 &8319550924185973444 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5426330194196255001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &83860739545842262 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5361496230242292559, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
   m_PrefabInstance: {fileID: 5426330194196255001}
   m_PrefabAsset: {fileID: 0}

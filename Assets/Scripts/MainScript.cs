@@ -31,12 +31,13 @@ public class MainScript : MonoBehaviour
     public GameObject explodeBlock;
     public GameObject magnetBlock;
     public GameObject factoryBlock;
-    public GameObject squareBlock;
     public GameObject fireBlock;
     public GameObject iceBlock;
     public GameObject questionBlock;
     public GameObject glassGrenadeBlock;
-
+    public GameObject squareBlock;
+    public GameObject spinningSquareBlock;
+    
     public AudioSource strikebeamSong;
 
     public GameObject gameUI;
@@ -334,6 +335,8 @@ public class MainScript : MonoBehaviour
                 return glassGrenadeBlock;
             case 10:
                 return squareBlock;
+            case 11:
+                return spinningSquareBlock;
             default:
                 Debug.LogError("No block corresponding to level " + level);
                 return null;

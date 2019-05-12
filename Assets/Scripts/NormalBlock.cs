@@ -1,11 +1,18 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class NormalBlock : FlammableFreezable
 {
     public float explosionForce;
 
     public Animator anim;
+
+    protected override void Start()
+    {
+        base.Start();
+        transform.Rotate(Vector3.up, Random.Range(0f, 360f));
+    }
 
     protected override void OnCollisionExit(Collision other)
     {
