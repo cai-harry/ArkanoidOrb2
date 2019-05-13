@@ -20,7 +20,6 @@ public class Ball : FlammableFreezable
 
     private MainScript _mainScript;
     
-    private ParticleSystem.VelocityOverLifetimeModule _lightningVelocity;
     private int _currentCombo;
 
     protected override void Start()
@@ -36,8 +35,6 @@ public class Ball : FlammableFreezable
         var initialDirection = Random.insideUnitSphere;
 
         rigidBody.AddForce(startSpeed * initialDirection);
-
-        _lightningVelocity = lightning.velocityOverLifetime;
     }
 
     protected override void OnCollisionEnter(Collision other)
@@ -94,10 +91,11 @@ public class Ball : FlammableFreezable
 
     public void DisplayElectric(Vector3 positionDeltaToBlock)
     {
+        var lightningVelocity = lightning.velocityOverLifetime;
+        lightningVelocity.x = lightningVelocityMultiplier.x * positionDeltaToBlock.x;
+        lightningVelocity.y = lightningVelocityMultiplier.y * positionDeltaToBlock.y;
+        lightningVelocity.z = lightningVelocityMultiplier.z * positionDeltaToBlock.z;
         lightning.Play();
-        _lightningVelocity.x = lightningVelocityMultiplier.x * positionDeltaToBlock.x;
-        _lightningVelocity.y = lightningVelocityMultiplier.y * positionDeltaToBlock.y;
-        _lightningVelocity.z = lightningVelocityMultiplier.z * positionDeltaToBlock.z;
     }
 
     private void ChangeSpeed(float toSpeed)
