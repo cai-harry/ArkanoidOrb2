@@ -24,7 +24,7 @@ public class MultiHitBlock : NormalBlock
                 OnBlockDestroyed();
                 break;
             default:
-                Debug.LogError($"Invalid ball collision number on {gameObject.name}");
+                LogInvalidBallCollisionNumber(n);
                 break;
         }
     }
@@ -33,5 +33,10 @@ public class MultiHitBlock : NormalBlock
     {
         var renderer = gameObject.GetComponent<Renderer>();
         renderer.material = newMaterial;
+    }
+
+    protected void LogInvalidBallCollisionNumber(int n)
+    {
+        Debug.LogError($"Invalid ball collision number {n} on {gameObject.name}");
     }
 }

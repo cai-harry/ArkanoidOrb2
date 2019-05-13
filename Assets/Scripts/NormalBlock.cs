@@ -31,6 +31,7 @@ public class NormalBlock : FlammableFreezable
     protected virtual void OnBlockDestroyed()
     {
         // TODO: add force field of strength ExplosionForce
+        DisableCollider();
         anim.Play("BlockDestroy");
         // Animation triggers DestroySelf() on finish
     }
@@ -38,5 +39,11 @@ public class NormalBlock : FlammableFreezable
     protected virtual void DestroySelf()
     {
         Destroy(gameObject);
+    }
+
+    private void DisableCollider()
+    {
+        var collider = gameObject.GetComponent<Collider>();
+        collider.enabled = false;
     }
 }

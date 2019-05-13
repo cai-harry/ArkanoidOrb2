@@ -38,7 +38,7 @@ public class GlassGrenadeBlock : MultiHitBlock
                 OnBlockDestroyed();
                 break;
             default:
-                Debug.LogError($"Invalid ball collision number on {gameObject.name}");
+                LogInvalidBallCollisionNumber(n);
                 break;
         }
     }
