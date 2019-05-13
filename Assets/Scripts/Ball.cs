@@ -19,6 +19,8 @@ public class Ball : FlammableFreezable
     public float sparksEmissionRate;
 
     private MainScript _mainScript;
+
+    private Color _color;
     
     private int _currentCombo;
 
@@ -28,6 +30,8 @@ public class Ball : FlammableFreezable
 
         _mainScript = GameObject.FindObjectOfType<MainScript>();
 
+        SetRandomColor();
+
         _currentCombo = 0;
 
         rigidBody = GetComponent<Rigidbody>();
@@ -35,6 +39,17 @@ public class Ball : FlammableFreezable
         var initialDirection = Random.insideUnitSphere;
 
         rigidBody.AddForce(startSpeed * initialDirection);
+    }
+
+    private void SetRandomColor()
+    {
+        _color = Random.ColorHSV();
+        var renderer = gameObject.GetComponent<Renderer>();
+        renderer.material.color = _color;
+        var main = sparks.main;
+        main.startColor = _color;
+        var trails = sparks.trails;
+        trails.colorOverLifetime = _color;
     }
 
     protected override void OnCollisionEnter(Collision other)
