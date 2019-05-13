@@ -40,7 +40,7 @@ public class MainScript : MonoBehaviour
     public GameObject glassGrenadeBlock;
     public GameObject squareBlock;
     public GameObject spinningSquareBlock;
-    
+
     public AudioSource strikebeamSong;
 
     public GameObject gameUI;
@@ -125,11 +125,16 @@ public class MainScript : MonoBehaviour
             OnStrikebeamCheckpoint();
         }
 
-        var lightMultiplier = Mathf.Clamp(
-            1 - strikebeamSong.time / _levelUpTimes[NumLevels],
-            0f, 1f);
+        var lightMultiplier = GetDaylightIntensity();
         mainLight.intensity = initialMainLightIntensity * lightMultiplier;
         mainLight.color = Color.Lerp(eventualMainLightColor, initialMainLightColor, lightMultiplier);
+    }
+
+    public float GetDaylightIntensity()
+    {
+        return Mathf.Clamp(
+            1 - strikebeamSong.time / _levelUpTimes[NumLevels],
+            0f, 1f);
     }
 
     private void KeyUpHandlers()
