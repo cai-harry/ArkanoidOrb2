@@ -23,6 +23,8 @@ public class MainScript : MonoBehaviour
     public int blockRingNumBlocks;
     public float blockRingRadius;
 
+    public float emergencySlowMotionRadius;
+    
     public GameObject ball;
 
     public GameObject normalBlock;
@@ -121,11 +123,7 @@ public class MainScript : MonoBehaviour
 
         if (!_paused)
         {
-            var aboutToGameOver =
-                _lives < 1 &&
-                ballsInPlay.Length == 1 &&
-                ballsInPlay[0].transform.position.magnitude > 2f;
-            if (aboutToGameOver)
+            if (AboutToGameOver(ballsInPlay))
             {
                 Time.timeScale = 0.5f;
                 strikebeamSong.pitch = 0.5f;
@@ -145,6 +143,24 @@ public class MainScript : MonoBehaviour
         var lightMultiplier = GetDaylightIntensity();
         mainLight.intensity = initialMainLightIntensity * lightMultiplier;
         mainLight.color = Color.Lerp(eventualMainLightColor, initialMainLightColor, lightMultiplier);
+    }
+
+    private bool AboutToGameOver(GameObject[] ballsInPlay)
+    {
+        if (_lives > 0)
+        {
+            return false;
+        }
+
+        foreach (var ball in ballsInPlay)
+        {
+            if (ball.transform.position.magnitude < emergencySlowMotionRadius)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public float GetDaylightIntensity()
