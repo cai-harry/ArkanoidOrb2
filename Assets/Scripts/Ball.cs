@@ -13,6 +13,8 @@ public class Ball : FlammableFreezable
     public float addSpeedAfterCollision;
     public float maxSpeedAfterCollision;
 
+    public float minY;
+    
     public AudioSource bounceSound;
     public float playBounceSoundFrom;
 
@@ -53,6 +55,11 @@ public class Ball : FlammableFreezable
         if (rigidBody.velocity.magnitude < minSpeed)
         {
             rigidBody.velocity = rigidBody.velocity.normalized * minSpeed;
+        }
+
+        if (transform.position.y < minY)
+        {
+            DestroySelf();
         }
     }
 
@@ -194,7 +201,7 @@ public class Ball : FlammableFreezable
         Destroy(comboPopup, 2f); // destroy after 2 seconds
     }
 
-    private void OnBecameInvisible()
+    private void DestroySelf()
     {
         Destroy(gameObject);
     }

@@ -293,11 +293,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8955562248708525729}
     m_Modifications:
-    - target: {fileID: 5094868989299174387, guid: 27f47487cf60c1b42a9b87f3a2c82575,
-        type: 3}
-      propertyPath: m_Name
-      value: PaddleLight
-      objectReference: {fileID: 0}
     - target: {fileID: 2725773934616777580, guid: 27f47487cf60c1b42a9b87f3a2c82575,
         type: 3}
       propertyPath: m_RootOrder
@@ -342,6 +337,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094868989299174387, guid: 27f47487cf60c1b42a9b87f3a2c82575,
+        type: 3}
+      propertyPath: m_Name
+      value: PaddleLight
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27f47487cf60c1b42a9b87f3a2c82575, type: 3}

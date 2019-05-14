@@ -112,9 +112,29 @@ public class MainScript : MonoBehaviour
             return;
         }
 
-        if (GameObject.FindGameObjectsWithTag("Ball").Length == 0)
+        var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
+
+        if (ballsInPlay.Length == 0)
         {
             RespawnOrDie();
+        }
+
+        if (!_paused)
+        {
+            var aboutToGameOver =
+                _lives < 1 &&
+                ballsInPlay.Length == 1 &&
+                ballsInPlay[0].transform.position.magnitude > 2f;
+            if (aboutToGameOver)
+            {
+                Time.timeScale = 0.5f;
+                strikebeamSong.pitch = 0.5f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+                strikebeamSong.pitch = 1f;
+            }
         }
 
         if (strikebeamSong.time > _levelUpTimes[_level])
