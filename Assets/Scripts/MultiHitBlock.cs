@@ -29,7 +29,7 @@ public class MultiHitBlock : NormalBlock
         }
     }
 
-    protected void ChangeMaterial(Material newMaterial)
+    protected virtual void ChangeMaterial(Material newMaterial)
     {
         var renderer = gameObject.GetComponent<Renderer>();
         renderer.material = newMaterial;

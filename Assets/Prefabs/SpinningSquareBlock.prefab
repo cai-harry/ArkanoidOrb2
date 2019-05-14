@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: SpinningFromStart
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: StartTorque.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8319550924185973444, guid: 184822727f23ca640912195630be88d7,
         type: 3}
       propertyPath: m_Name

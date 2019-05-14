@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpinningBlock : NormalBlock
+public class SpinningBlock : MultiHitBlock
 {
     public float MinSpinSpeed;
     public float MaxSpinSpeed;
@@ -36,5 +36,12 @@ public class SpinningBlock : NormalBlock
     public void StartSpinning()
     {
         _spinning = true;
+    }
+    
+    protected override void ChangeMaterial(Material newMaterial)
+    {
+        var renderer = gameObject.GetComponent<Renderer>();
+        renderer.material = newMaterial;
+        renderer.material.color = Random.ColorHSV();
     }
 }
