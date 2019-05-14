@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11d39db39a471a428ae7697f35df49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateSpeed: 100
+  rotateSpeed: 180
   finalPaddleLightIntensity: 2
   leftPaddleLight: {fileID: 2778214086773434492}
   rightPaddleLight: {fileID: 6710616182694521883}

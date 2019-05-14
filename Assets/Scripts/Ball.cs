@@ -9,6 +9,10 @@ public class Ball : FlammableFreezable
     public Rigidbody rigidBody;
     public float startSpeed;
 
+    public float minSpeed;
+    public float addSpeedAfterCollision;
+    public float maxSpeedAfterCollision;
+
     public AudioSource bounceSound;
     public float playBounceSoundFrom;
 
@@ -21,8 +25,10 @@ public class Ball : FlammableFreezable
     private MainScript _mainScript;
 
     private Color _color;
-    
+
     private int _currentCombo;
+
+    private float _lastCollisionSpeed;
 
     protected override void Start()
     {
@@ -41,6 +47,15 @@ public class Ball : FlammableFreezable
         rigidBody.AddForce(startSpeed * initialDirection);
     }
 
+    private void FixedUpdate()
+    {
+        // enforce minSpeed
+        if (rigidBody.velocity.magnitude < minSpeed)
+        {
+            rigidBody.velocity = rigidBody.velocity.normalized * minSpeed;
+        }
+    }
+
     private void SetRandomColor()
     {
         _color = Random.ColorHSV();
@@ -55,14 +70,15 @@ public class Ball : FlammableFreezable
     protected override void OnCollisionEnter(Collision other)
     {
         base.OnCollisionEnter(other);
-        OnVelocityChange();
+        PlayCollisionEffects();
+        _lastCollisionSpeed = rigidBody.velocity.magnitude;
     }
 
-    private void OnVelocityChange()
+    private void PlayCollisionEffects()
     {
         bounceSound.time = playBounceSoundFrom;
         bounceSound.Play();
-        
+
         var sparksMain = sparks.main;
         sparksMain.startSpeed = rigidBody.velocity.magnitude;
         var sparksEmission = sparks.emission;
@@ -73,7 +89,14 @@ public class Ball : FlammableFreezable
     protected override void OnCollisionExit(Collision other)
     {
         base.OnCollisionExit(other);
-        
+
+        ChangeSpeed(
+            Mathf.Min(
+                addSpeedAfterCollision + other.relativeVelocity.magnitude,
+                maxSpeedAfterCollision
+            )
+        );
+
         if (other.gameObject.CompareTag("Block"))
         {
             OnBlockCollisionExit();
@@ -92,6 +115,7 @@ public class Ball : FlammableFreezable
             return;
         }
 
+        PlayCollisionEffects();
         ChangeSpeed(toSpeed);
     }
 
@@ -102,6 +126,7 @@ public class Ball : FlammableFreezable
             return;
         }
 
+        PlayCollisionEffects();
         ChangeSpeed(toSpeed);
     }
 
@@ -116,7 +141,6 @@ public class Ball : FlammableFreezable
 
     private void ChangeSpeed(float toSpeed)
     {
-        OnVelocityChange();
         rigidBody.velocity = toSpeed * rigidBody.velocity.normalized;
     }
 

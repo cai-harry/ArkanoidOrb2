@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e24fd4a57b593c14e91b4abc4e4e159f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionForce: 0
+  startOnFire: 0
+  startFrozen: 0
+  maxTimeOnFire: 0
+  maxTimeFrozen: 0
+  explosionForce: 50
   anim: {fileID: 4660457307259999477}
-  instantiateNumBlocks: 6
-  instantiateBlocksRadius: 0.7
-  instantiateBlocksSpaceRadius: 2
-  normalBlock: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
-    type: 3}
 --- !u!1001 &777602457473320890
 PrefabInstance:
   m_ObjectHideFlags: 0

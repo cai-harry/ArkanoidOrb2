@@ -15,9 +15,6 @@ public class MainScript : MonoBehaviour
     public float blockSpaceRadius;
     public int blocksPerNewLevel;
 
-    public float maxSpeedUp;
-    public float minSlowDown;
-
     public Light mainLight;
     public float initialMainLightIntensity;
     public Color initialMainLightColor;
@@ -164,7 +161,7 @@ public class MainScript : MonoBehaviour
                 foreach (var ball in ballsInPlay)
                 {
                     var ballScript = ball.GetComponent<Ball>();
-                    ballScript.SpeedUp(maxSpeedUp);
+                    ballScript.SpeedUp(ballScript.maxSpeedAfterCollision);
                 }
             }
 
@@ -174,7 +171,7 @@ public class MainScript : MonoBehaviour
                 foreach (var ball in ballsInPlay)
                 {
                     var ballScript = ball.GetComponent<Ball>();
-                    ballScript.SlowDown(minSlowDown);
+                    ballScript.SlowDown(ballScript.minSpeed);
                 }
             }
 

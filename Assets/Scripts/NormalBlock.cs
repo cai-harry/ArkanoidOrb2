@@ -4,8 +4,6 @@ using Random = UnityEngine.Random;
 
 public class NormalBlock : FlammableFreezable
 {
-    public float explosionForce;
-
     public Animator anim;
 
     protected override void Start()
@@ -30,7 +28,6 @@ public class NormalBlock : FlammableFreezable
 
     protected virtual void OnBlockDestroyed()
     {
-        // TODO: add force field of strength ExplosionForce
         DisableCollider();
         anim.Play("BlockDestroy");
         // Animation triggers DestroySelf() on finish

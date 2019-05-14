@@ -16,7 +16,7 @@ MonoBehaviour:
   startFrozen: 0
   maxTimeOnFire: 0
   maxTimeFrozen: 0
-  explosionForce: 0
+  explosionForce: 50
   anim: {fileID: 3468599044806051593}
   secondMaterial: {fileID: 2100000, guid: 05485a231ba7e414da318d7767866263, type: 2}
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}

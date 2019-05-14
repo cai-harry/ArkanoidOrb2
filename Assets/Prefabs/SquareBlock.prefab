@@ -29,7 +29,7 @@ MonoBehaviour:
   startFrozen: 0
   maxTimeOnFire: 0
   maxTimeFrozen: 0
-  explosionForce: 0
+  explosionForce: 50
   anim: {fileID: 83860739545842262}
   MinSpinSpeed: -7.2
   MaxSpinSpeed: 7.2

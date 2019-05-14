@@ -111,8 +111,7 @@ MonoBehaviour:
   startFrozen: 0
   maxTimeOnFire: Infinity
   maxTimeFrozen: Infinity
-  explosionForce: 0
-  blockCollider: {fileID: 4051772861863158722}
+  explosionForce: 0.5
   anim: {fileID: 5361496230242292559}
 --- !u!95 &5361496230242292559
 Animator:

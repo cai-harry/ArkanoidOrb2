@@ -16,7 +16,7 @@ MonoBehaviour:
   startFrozen: 0
   maxTimeOnFire: 0
   maxTimeFrozen: 0
-  explosionForce: 0
+  explosionForce: 50
   anim: {fileID: 7018233548600741503}
   minRepulsion: -2.488
   maxRepulsion: -2.48
