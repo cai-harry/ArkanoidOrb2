@@ -55,13 +55,14 @@ public class Ball : FlammableFreezable
     protected override void OnCollisionEnter(Collision other)
     {
         base.OnCollisionEnter(other);
-        bounceSound.time = playBounceSoundFrom;
-        bounceSound.Play();
-        PlaySparks();
+        OnVelocityChange();
     }
 
-    private void PlaySparks()
+    private void OnVelocityChange()
     {
+        bounceSound.time = playBounceSoundFrom;
+        bounceSound.Play();
+        
         var sparksMain = sparks.main;
         sparksMain.startSpeed = rigidBody.velocity.magnitude;
         var sparksEmission = sparks.emission;
@@ -115,7 +116,7 @@ public class Ball : FlammableFreezable
 
     private void ChangeSpeed(float toSpeed)
     {
-        PlaySparks();
+        OnVelocityChange();
         rigidBody.velocity = toSpeed * rigidBody.velocity.normalized;
     }
 
