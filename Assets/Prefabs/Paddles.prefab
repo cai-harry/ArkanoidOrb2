@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotateSpeed: 180
   finalPaddleLightIntensity: 2
-  leftPaddleLight: {fileID: 2778214086773434492}
-  rightPaddleLight: {fileID: 6710616182694521883}
+  leftPaddleLight: {fileID: 5893752735817392033}
+  rightPaddleLight: {fileID: 3054574969234299846}
 --- !u!1001 &999228473912573073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,9 +124,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 999228473912573073}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &6710616182694521883 stripped
+--- !u!108 &3054574969234299846 stripped
 Light:
-  m_CorrespondingSourceObject: {fileID: 5835852430280822922, guid: 705924771aa94264c90863510b2b7094,
+  m_CorrespondingSourceObject: {fileID: 2862599141173831511, guid: 705924771aa94264c90863510b2b7094,
     type: 3}
   m_PrefabInstance: {fileID: 999228473912573073}
   m_PrefabAsset: {fileID: 0}
@@ -205,9 +205,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8535216449145338102}
   m_PrefabAsset: {fileID: 0}
---- !u!108 &2778214086773434492 stripped
+--- !u!108 &5893752735817392033 stripped
 Light:
-  m_CorrespondingSourceObject: {fileID: 5835852430280822922, guid: 705924771aa94264c90863510b2b7094,
+  m_CorrespondingSourceObject: {fileID: 2862599141173831511, guid: 705924771aa94264c90863510b2b7094,
     type: 3}
   m_PrefabInstance: {fileID: 8535216449145338102}
   m_PrefabAsset: {fileID: 0}

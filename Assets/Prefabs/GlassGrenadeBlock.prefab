@@ -43,7 +43,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.88171726, b: 0.28773582, a: 1}
   m_Intensity: 1
-  m_Range: 1000
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -74,7 +74,7 @@ Light:
       e33: 1
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 1
+  m_DrawHalo: 0
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:
@@ -107,7 +107,6 @@ MonoBehaviour:
   startFrozen: 0
   maxTimeOnFire: 0
   maxTimeFrozen: 0
-  explosionForce: 50
   anim: {fileID: 4750685554984068079}
   secondMaterial: {fileID: 2100000, guid: 9c174883bcdbfe649adc87257a759f58, type: 2}
   blockLight: {fileID: 4491919902162642007}

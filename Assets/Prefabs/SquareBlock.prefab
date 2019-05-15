@@ -983,26 +983,26 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 2.2008533
-          outSlope: 2.2008533
+          inSlope: 16.001995
+          outSlope: 16.001995
           tangentMode: 34
           weightedMode: 0
           inWeight: 0
           outWeight: 0.33333334
         - serializedVersion: 3
-          time: 0.4543692
+          time: 0.062492207
           value: 1
-          inSlope: 0.18405616
-          outSlope: 0.18405616
-          tangentMode: 34
+          inSlope: -1.0395709
+          outSlope: -1.0395709
+          tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
+          inWeight: 0.65663844
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -1.832741
-          outSlope: -1.832741
+          inSlope: -1.0666578
+          outSlope: -1.0666578
           tangentMode: 34
           weightedMode: 0
           inWeight: 0.33333334
@@ -3771,9 +3771,9 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
+    enabled: 1
     ratio: 0
-    light: {fileID: 0}
+    light: {fileID: 1891503191006167772, guid: 3ba666894e0ba2f45bf9056e25d0d1f4, type: 3}
     randomDistribution: 1
     color: 1
     range: 1
