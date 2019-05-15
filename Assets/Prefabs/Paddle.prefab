@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8955562248708525729}
   - component: {fileID: 8955562248708525734}
   - component: {fileID: 8955562248708525735}
-  - component: {fileID: 8955562248708525732}
   - component: {fileID: 5384296315328566895}
+  - component: {fileID: 5870772370022155433}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Paddle
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8955562248708525738}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.4, z: 0.5}
+  m_LocalPosition: {x: 0.217, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 0.4, z: 1.5}
   m_Children:
   - {fileID: 2976690379596722280}
   - {fileID: 6438613509952186756}
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8955562248708525738}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8955562248708525735
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -82,19 +82,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8955562248708525732
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8955562248708525738}
-  m_Material: {fileID: 13400000, guid: aee222c5b6c7ff149858f21c1e5fd6cb, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5384296315328566895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +98,20 @@ MonoBehaviour:
   startFrozen: 0
   maxTimeOnFire: 5
   maxTimeFrozen: 5
+--- !u!64 &5870772370022155433
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955562248708525738}
+  m_Material: {fileID: 13400000, guid: aee222c5b6c7ff149858f21c1e5fd6cb, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &8891922718387604
 PrefabInstance:
   m_ObjectHideFlags: 0
