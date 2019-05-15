@@ -7,16 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: SpinningFromStart
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: StartTorque.y
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8319550924185973444, guid: 184822727f23ca640912195630be88d7,
         type: 3}
       propertyPath: m_Name
@@ -76,6 +66,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8319550924185973466, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 42325bd13c33aa74ca346bf88d331c44, type: 2}
+    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: SpinningFromStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: StartTorque.y
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 184822727f23ca640912195630be88d7, type: 3}
