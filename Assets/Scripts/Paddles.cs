@@ -10,11 +10,15 @@ public class Paddles : MonoBehaviour
     public Light leftPaddleLight;
     public Light rightPaddleLight;
 
+    private float _deltaRotationY;
+
+    public float DeltaRotationY => _deltaRotationY;
+
     void FixedUpdate()
     {
         var horizontal = Input.GetAxis("Horizontal");
-        var deltaRotationY = horizontal * rotateSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.up, deltaRotationY);
+        _deltaRotationY = horizontal * rotateSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.up, _deltaRotationY);
     }
 
     private void Update()

@@ -14,7 +14,10 @@ public class Ball : FlammableFreezable
     public float maxSpeedAfterCollision;
 
     public float minY;
-    
+
+    public float magnusEffectStrength;
+    public float spinDecay;
+
     public AudioSource bounceSound;
     public float playBounceSoundFrom;
 
@@ -25,6 +28,14 @@ public class Ball : FlammableFreezable
     public float sparksEmissionRate;
 
     private MainScript _mainScript;
+
+    private float _spin;
+
+    public float Spin
+    {
+        get { return _spin; }
+        set { _spin = value; }
+    }
 
     private Color _color;
 
@@ -41,6 +52,8 @@ public class Ball : FlammableFreezable
         SetRandomColor();
 
         _currentCombo = 0;
+
+        _spin = 0;
 
         rigidBody = GetComponent<Rigidbody>();
 
@@ -61,6 +74,16 @@ public class Ball : FlammableFreezable
         {
             DestroySelf();
         }
+
+        AddSpinForce();
+        _spin *= spinDecay;
+    }
+
+    private void AddSpinForce()
+    {
+        var velocityMinusMinimum = (rigidBody.velocity.magnitude - minSpeed) * rigidBody.velocity.normalized;
+        var magnusForce = Quaternion.Euler(0, 90, 0) * velocityMinusMinimum * _spin * magnusEffectStrength;
+        rigidBody.AddForce(magnusForce);
     }
 
     private void SetRandomColor()
@@ -111,7 +134,7 @@ public class Ball : FlammableFreezable
 
         if (other.gameObject.CompareTag("Paddle"))
         {
-            OnPaddleCollisionExit();
+            OnPaddleCollisionExit(other);
         }
     }
 
@@ -167,7 +190,7 @@ public class Ball : FlammableFreezable
         _mainScript.IncreaseScore(1, _currentCombo);
     }
 
-    private void OnPaddleCollisionExit()
+    private void OnPaddleCollisionExit(Collision paddleCollision)
     {
         if (frozen)
         {
@@ -176,6 +199,10 @@ public class Ball : FlammableFreezable
         }
 
         _currentCombo = 0;
+
+        var paddleScript = paddleCollision.gameObject.transform.parent.GetComponent<Paddles>();
+        _spin = paddleScript.DeltaRotationY;
+        Debug.Log($"_spin={_spin}");
     }
 
     private void ShowComboPopup()
