@@ -4,6 +4,7 @@ using UnityEngine.Serialization;
 public class MultiHitBlock : NormalBlock
 {
     public Material secondMaterial;
+    public Material thirdMaterial;
 
     private int _numHits = 0;
 
@@ -21,6 +22,9 @@ public class MultiHitBlock : NormalBlock
                 ChangeMaterial(secondMaterial);
                 break;
             case 2:
+                ChangeMaterial(thirdMaterial);
+                break;
+            case 3:
                 OnBlockDestroyed();
                 break;
             default:

@@ -17,7 +17,8 @@ MonoBehaviour:
   maxTimeOnFire: Infinity
   maxTimeFrozen: Infinity
   anim: {fileID: 7598909564382333893}
-  secondMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
+  secondMaterial: {fileID: 2100000, guid: 0ab253562943393498f2a9c30dad8f77, type: 2}
+  thirdMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
 --- !u!1001 &2527473315227097226
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6562595220610755563
+--- !u!114 &1157777353850241120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 23900579984604531}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36713f7a94655d44d8ec5db4105e928b, type: 3}
+  m_Script: {fileID: 11500000, guid: d075b845d4e295941afc9c9c3672112d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startOnFire: 1
@@ -17,6 +17,8 @@ MonoBehaviour:
   maxTimeOnFire: Infinity
   maxTimeFrozen: Infinity
   anim: {fileID: 8217377077237878241}
+  secondMaterial: {fileID: 2100000, guid: 418dacefdfb4a034bb55c1526e55232c, type: 2}
+  thirdMaterial: {fileID: 2100000, guid: a258a345286894847b7d7843fe4c6874, type: 2}
 --- !u!1001 &4066223248596246190
 PrefabInstance:
   m_ObjectHideFlags: 0
