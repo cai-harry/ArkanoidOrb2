@@ -79,6 +79,12 @@ public class Ball : FlammableFreezable
         _spin *= spinDecay;
     }
 
+    private void Update()
+    {
+        var trails = transform.Find("Trails");
+        trails.Rotate(Vector3.up, 100 * _spin * Time.deltaTime);
+    }
+
     private void AddSpinForce()
     {
         var velocityMinusMinimum = (rigidBody.velocity.magnitude - minSpeed) * rigidBody.velocity.normalized;
