@@ -14,11 +14,12 @@ public class NormalBlock : FlammableFreezable
 
     protected override void OnCollisionExit(Collision other)
     {
-        base.OnCollisionExit(other);
         if (other.gameObject.CompareTag("Ball"))
         {
             OnBallCollisionExit(other);
         }
+
+        base.OnCollisionExit(other);
     }
 
     protected virtual void OnBallCollisionExit(Collision ball)

@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2027403025979231559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477003066755397856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36713f7a94655d44d8ec5db4105e928b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startOnFire: 0
+  startFrozen: 1
+  maxTimeOnFire: Infinity
+  maxTimeFrozen: Infinity
+  anim: {fileID: 7359528234566142066}
 --- !u!1001 &3190122512507067197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32,10 +49,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4051772861863158723, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4fd2f3b516ffaa646996e7617c605164, type: 2}
     - target: {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
         type: 3}
       propertyPath: startFrozen
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
+--- !u!1 &1477003066755397856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3190122512507067197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7359528234566142066 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5361496230242292559, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3190122512507067197}
+  m_PrefabAsset: {fileID: 0}
