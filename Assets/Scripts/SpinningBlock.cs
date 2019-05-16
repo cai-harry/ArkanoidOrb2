@@ -25,6 +25,13 @@ public class SpinningBlock : MultiHitBlock
         }
     }
 
+    protected override void OnBallCollisionExit(Collision ball)
+    {
+        base.OnBallCollisionExit(ball);
+        var ballScript = ball.gameObject.GetComponent<Ball>();
+        ballScript.Spin = _spinSpeed;
+    }
+
     protected void FixedUpdate()
     {
         if (_spinning)
@@ -36,12 +43,5 @@ public class SpinningBlock : MultiHitBlock
     public void StartSpinning()
     {
         _spinning = true;
-    }
-    
-    protected override void ChangeMaterial(Material newMaterial)
-    {
-        var renderer = gameObject.GetComponent<Renderer>();
-        renderer.material = newMaterial;
-        renderer.material.color = Random.ColorHSV();
     }
 }

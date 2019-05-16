@@ -250,7 +250,7 @@ MonoBehaviour:
   fireBlock: {fileID: 23900579984604531, guid: 4ac76056695e9b54297f24a81e9b73d6, type: 3}
   iceBlock: {fileID: 1477003066755397856, guid: 5508a59118ab5f5458bf7969230df259,
     type: 3}
-  questionBlock: {fileID: 4791801335894210459, guid: 6c0e25188f51527419a3988a68f96d51,
+  spinBlock: {fileID: 4791801335894210459, guid: 6c0e25188f51527419a3988a68f96d51,
     type: 3}
   glassGrenadeBlock: {fileID: 3724695483956614013, guid: f38b0f5f28e41e2438378aa5a983f8d5,
     type: 3}

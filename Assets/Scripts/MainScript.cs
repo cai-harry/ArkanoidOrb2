@@ -35,7 +35,7 @@ public class MainScript : MonoBehaviour
     public GameObject factoryBlock;
     public GameObject fireBlock;
     public GameObject iceBlock;
-    public GameObject questionBlock;
+    public GameObject spinBlock;
     public GameObject glassGrenadeBlock;
     public GameObject squareBlock;
     public GameObject spinningSquareBlock;
@@ -386,7 +386,7 @@ public class MainScript : MonoBehaviour
             case 7:
                 return iceBlock;
             case 8:
-                return questionBlock;
+                return spinBlock;
             case 9:
                 return glassGrenadeBlock;
             case 10:

@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnFire: 0
   startFrozen: 0
-  maxTimeOnFire: 0
-  maxTimeFrozen: 0
-  explosionForce: 50
+  maxTimeOnFire: Infinity
+  maxTimeFrozen: Infinity
   anim: {fileID: 7598909564382333893}
   secondMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
 --- !u!1001 &2527473315227097226
