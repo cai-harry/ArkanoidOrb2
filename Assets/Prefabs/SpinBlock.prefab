@@ -17,9 +17,8 @@ MonoBehaviour:
   maxTimeOnFire: Infinity
   maxTimeFrozen: Infinity
   anim: {fileID: 3468599044806051593}
-  secondMaterial: {fileID: 2100000, guid: 05485a231ba7e414da318d7767866263, type: 2}
-  MinSpinSpeed: -5
-  MaxSpinSpeed: 5
+  MinSpinSpeed: -8
+  MaxSpinSpeed: 8
   SpinningFromStart: 1
 --- !u!1001 &8810496753680553030
 PrefabInstance:

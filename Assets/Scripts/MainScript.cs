@@ -30,7 +30,6 @@ public class MainScript : MonoBehaviour
     public GameObject normalBlock;
     public GameObject rockBlock;
     public GameObject ballBlock;
-    public GameObject explodeBlock;
     public GameObject magnetBlock;
     public GameObject factoryBlock;
     public GameObject fireBlock;
@@ -374,19 +373,19 @@ public class MainScript : MonoBehaviour
             case 1:
                 return normalBlock;
             case 2:
-                return rockBlock;
+                return spinBlock;
             case 3:
                 return ballBlock;
             case 4:
                 return magnetBlock;
             case 5:
-                return factoryBlock;
+                return rockBlock;
             case 6:
                 return fireBlock;
             case 7:
                 return iceBlock;
             case 8:
-                return spinBlock;
+                return factoryBlock;
             case 9:
                 return glassGrenadeBlock;
             case 10:

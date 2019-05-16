@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpinningBlock : MultiHitBlock
+public class SpinningBlock : NormalBlock
 {
     public float MinSpinSpeed;
     public float MaxSpinSpeed;
