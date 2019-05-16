@@ -79,8 +79,9 @@ public class Ball : FlammableFreezable
         _spin *= spinDecay;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         var trails = transform.Find("Trails");
         trails.Rotate(Vector3.up, 100 * _spin * Time.deltaTime);
     }
