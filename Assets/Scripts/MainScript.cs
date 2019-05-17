@@ -260,6 +260,16 @@ public class MainScript : MonoBehaviour
                 SkipToLevel(10);
             }
 
+            if (Input.GetKeyUp(KeyCode.Minus))
+            {
+                SkipToLevel(11);
+            }
+
+            if (Input.GetKeyUp(KeyCode.Equals))
+            {
+                SkipToLevel(12);
+            }
+
             if (Input.GetKeyUp(KeyCode.Delete))
             {
                 foreach (var ball in GameObject.FindGameObjectsWithTag("Ball"))

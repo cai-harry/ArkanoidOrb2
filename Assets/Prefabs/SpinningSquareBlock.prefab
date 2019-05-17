@@ -7,65 +7,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+    - target: {fileID: -9075939805813809223, guid: 184822727f23ca640912195630be88d7,
         type: 3}
       propertyPath: SpinningFromStart
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: StartTorque.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+    - target: {fileID: -9075939805813809223, guid: 184822727f23ca640912195630be88d7,
         type: 3}
       propertyPath: MinSpinSpeed
-      value: -2.5
+      value: -8
       objectReference: {fileID: 0}
-    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+    - target: {fileID: -9075939805813809223, guid: 184822727f23ca640912195630be88d7,
         type: 3}
       propertyPath: MaxSpinSpeed
-      value: 2.5
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MinSpinSpeed
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: MaxSpinSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SpinningFromStart
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8319550924185973444, guid: 184822727f23ca640912195630be88d7,
         type: 3}
       propertyPath: m_Name
       value: SpinningSquareBlock
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8319550924185973464, guid: 184822727f23ca640912195630be88d7,
         type: 3}
@@ -92,5 +64,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 42325bd13c33aa74ca346bf88d331c44, type: 2}
+    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: SpinningFromStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: StartTorque.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: MinSpinSpeed
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5780546169949480370, guid: 184822727f23ca640912195630be88d7,
+        type: 3}
+      propertyPath: MaxSpinSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 184822727f23ca640912195630be88d7, type: 3}
