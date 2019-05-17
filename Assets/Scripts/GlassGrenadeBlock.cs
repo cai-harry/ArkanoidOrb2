@@ -29,10 +29,11 @@ public class GlassGrenadeBlock : MultiHitBlock
                 break;
             case 3:
                 SetToLightIntensityOnHit();
+                ChangeMaterial(materialsAfterFirstHit);
                 break;
             case 4:
-                ResetLightIntensity();
-                ChangeMaterial(secondMaterial);
+                blockLight.intensity = 0;
+                ChangeMaterial(materialsAfterSecondHit);
                 break;
             case 5:
                 OnBlockDestroyed();

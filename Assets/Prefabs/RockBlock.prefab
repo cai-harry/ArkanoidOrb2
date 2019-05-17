@@ -17,8 +17,13 @@ MonoBehaviour:
   maxTimeOnFire: Infinity
   maxTimeFrozen: Infinity
   anim: {fileID: 7598909564382333893}
-  secondMaterial: {fileID: 2100000, guid: 0ab253562943393498f2a9c30dad8f77, type: 2}
-  thirdMaterial: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
+  materialsAfterFirstHit:
+  - {fileID: 2100000, guid: 0c5772933ac94b44f8bf8328ce925ced, type: 2}
+  - {fileID: 2100000, guid: 0ab253562943393498f2a9c30dad8f77, type: 2}
+  materialsAfterSecondHit:
+  - {fileID: 2100000, guid: 0c5772933ac94b44f8bf8328ce925ced, type: 2}
+  - {fileID: 2100000, guid: 0ab253562943393498f2a9c30dad8f77, type: 2}
+  - {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
 --- !u!1001 &2527473315227097226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,9 +58,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4051772861863158723, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051772861863158723, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0c5772933ac94b44f8bf8328ce925ced, type: 2}
+    - target: {fileID: 4051772861863158723, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0ab253562943393498f2a9c30dad8f77, type: 2}
+    - target: {fileID: 4051772861863158723, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 74933c17f2369e24d912deaa63a5358f, type: 2}
     m_RemovedComponents:
     - {fileID: -2144427175336864044, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc6ac5d4d57efc24299a18ed1eacf62b, type: 3}

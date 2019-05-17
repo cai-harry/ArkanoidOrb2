@@ -3,8 +3,8 @@ using UnityEngine.Serialization;
 
 public class MultiHitBlock : NormalBlock
 {
-    public Material secondMaterial;
-    public Material thirdMaterial;
+    public Material[] materialsAfterFirstHit;
+    public Material[] materialsAfterSecondHit;
 
     private int _numHits = 0;
 
@@ -19,10 +19,10 @@ public class MultiHitBlock : NormalBlock
         switch (n)
         {
             case 1:
-                ChangeMaterial(secondMaterial);
+                ChangeMaterial(materialsAfterFirstHit);
                 break;
             case 2:
-                ChangeMaterial(thirdMaterial);
+                ChangeMaterial(materialsAfterSecondHit);
                 break;
             case 3:
                 OnBlockDestroyed();
@@ -33,10 +33,10 @@ public class MultiHitBlock : NormalBlock
         }
     }
 
-    protected virtual void ChangeMaterial(Material newMaterial)
+    protected virtual void ChangeMaterial(Material[] newMaterials)
     {
         var renderer = gameObject.GetComponent<Renderer>();
-        renderer.material = newMaterial;
+        renderer.materials = newMaterials;
     }
 
     protected void LogInvalidBallCollisionNumber(int n)
