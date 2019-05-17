@@ -75,8 +75,8 @@ public class Ball : FlammableFreezable
             DestroySelf();
         }
 
-        AddSpinForce();
-        _spin *= spinDecay;
+        AddMagnusForce();
+        _spin *= Mathf.Pow(spinDecay, Time.deltaTime);
     }
 
     protected override void Update()
@@ -86,10 +86,9 @@ public class Ball : FlammableFreezable
         trails.Rotate(Vector3.up, 100 * _spin * Time.deltaTime);
     }
 
-    private void AddSpinForce()
+    private void AddMagnusForce()
     {
-        var velocityMinusMinimum = (rigidBody.velocity.magnitude - minSpeed) * rigidBody.velocity.normalized;
-        var magnusForce = Quaternion.Euler(0, 90, 0) * velocityMinusMinimum * _spin * magnusEffectStrength;
+        var magnusForce = Quaternion.Euler(0, 90, 0) * rigidBody.velocity * _spin * magnusEffectStrength;
         rigidBody.AddForce(magnusForce);
     }
 

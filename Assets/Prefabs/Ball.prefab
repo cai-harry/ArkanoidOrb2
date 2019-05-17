@@ -4926,7 +4926,7 @@ MonoBehaviour:
   maxSpeedAfterCollision: 3
   minY: -2
   magnusEffectStrength: 1
-  spinDecay: 0.9999999
+  spinDecay: 0.1
   bounceSound: {fileID: 3685478479587152882}
   playBounceSoundFrom: 0.02
   popupText: {fileID: 6547164952054054727, guid: 348000f2c40250b4e9059cdd05ca4e48,
@@ -5128,11 +5128,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1784785013204505564}
     m_Modifications:
-    - target: {fileID: 776638265400092777, guid: f6d8126241c43484aa90fd9a59b53e5c,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
     - target: {fileID: 7731370253447986602, guid: f6d8126241c43484aa90fd9a59b53e5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5202,6 +5197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 776638265400092777, guid: f6d8126241c43484aa90fd9a59b53e5c,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f6d8126241c43484aa90fd9a59b53e5c, type: 3}
@@ -5313,11 +5313,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1784785013204505564}
     m_Modifications:
-    - target: {fileID: 3639300955746052546, guid: 03875c71dcf55b44598024ac7fffe07e,
-        type: 3}
-      propertyPath: m_Name
-      value: Fire
-      objectReference: {fileID: 0}
     - target: {fileID: 2977093797597453820, guid: 03875c71dcf55b44598024ac7fffe07e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5387,6 +5382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3639300955746052546, guid: 03875c71dcf55b44598024ac7fffe07e,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03875c71dcf55b44598024ac7fffe07e, type: 3}
