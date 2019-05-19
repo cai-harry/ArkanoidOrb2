@@ -216,7 +216,6 @@ public class Ball : FlammableFreezable
 
         var paddleScript = paddleCollision.gameObject.transform.parent.GetComponent<Paddles>();
         _spin = paddleScript.DeltaRotationY;
-        Debug.Log($"_spin={_spin}");
     }
 
     private void ShowComboPopup()

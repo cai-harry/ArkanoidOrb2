@@ -21,7 +21,6 @@ public class SpinningBlock : NormalBlock
 
         if (SpinningFromStart)
         {
-            Debug.Log($"Starting spinning with speed {_spinSpeed}");
             StartSpinning();
         }
     }
@@ -37,7 +36,6 @@ public class SpinningBlock : NormalBlock
     {
         if (_spinning)
         {
-            Debug.Log($"Spinning with speed {_spinSpeed}");
             transform.Rotate(Vector3.up, _spinSpeed);
         }
     }

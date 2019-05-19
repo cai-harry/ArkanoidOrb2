@@ -21,7 +21,6 @@ public class MenuScript : MonoBehaviour
 
     private void LoadGameScene()
     {
-        Debug.Log("Loading game scene");
         SceneManager.LoadScene(gameSceneName);
     }
 }
