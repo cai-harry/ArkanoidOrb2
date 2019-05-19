@@ -21,6 +21,7 @@ public class Ball : FlammableFreezable
     public AudioSource bounceSound;
     public float playBounceSoundFrom;
 
+    public TrailRenderer[] trailRenderers;
     public GameObject popupText;
     public ParticleSystem lightning;
     public Vector3 lightningVelocityMultiplier;
@@ -95,12 +96,19 @@ public class Ball : FlammableFreezable
     private void SetRandomColor()
     {
         _color = Random.ColorHSV();
+        
         var renderer = gameObject.GetComponent<Renderer>();
         renderer.material.color = _color;
+
+        foreach (var trailRenderer in trailRenderers)
+        {
+            trailRenderer.startColor = _color;
+        }
+        
         var main = sparks.main;
         main.startColor = _color;
-        var trails = sparks.trails;
-        trails.colorOverLifetime = _color;
+        var sparksTrails = sparks.trails;
+        sparksTrails.colorOverLifetime = _color;
     }
 
     protected override void OnCollisionEnter(Collision other)
