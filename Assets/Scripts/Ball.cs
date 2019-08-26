@@ -21,6 +21,8 @@ public class Ball : FlammableFreezable
     public AudioSource bounceSound;
     public float playBounceSoundFrom;
 
+    public bool setRandomColor;
+
     public TrailRenderer[] trailRenderers;
     public GameObject popupText;
     public ParticleSystem lightning;
@@ -50,13 +52,16 @@ public class Ball : FlammableFreezable
 
         _mainScript = GameObject.FindObjectOfType<MainScript>();
 
-        SetRandomColor();
-
         _currentCombo = 0;
 
         _spin = 0;
 
         rigidBody = GetComponent<Rigidbody>();
+
+        if (setRandomColor)
+        {
+            SetColor(Random.ColorHSV());
+        }
 
         var initialDirection = Random.insideUnitSphere;
 
@@ -93,10 +98,10 @@ public class Ball : FlammableFreezable
         rigidBody.AddForce(magnusForce);
     }
 
-    private void SetRandomColor()
+    private void SetColor(Color color)
     {
-        _color = Random.ColorHSV();
-        
+        _color = color;
+
         var renderer = gameObject.GetComponent<Renderer>();
         renderer.material.color = _color;
 
@@ -104,7 +109,7 @@ public class Ball : FlammableFreezable
         {
             trailRenderer.startColor = _color;
         }
-        
+
         var main = sparks.main;
         main.startColor = _color;
         var sparksTrails = sparks.trails;
