@@ -24,7 +24,7 @@ public class MainScript : MonoBehaviour
     public float blockRingRadius;
 
     public float emergencySlowMotionRadius;
-    
+
     public GameObject ball;
 
     public GameObject normalBlock;
@@ -49,7 +49,6 @@ public class MainScript : MonoBehaviour
     public string menuSceneName;
 
 
-    private GameObject _ui;
 
     private const int NumLevels = 11;
 
@@ -79,8 +78,6 @@ public class MainScript : MonoBehaviour
 
     void Start()
     {
-        _ui = Instantiate(gameUI);
-
         _lives = 3;
         _level = 0;
         _gameOver = false;
@@ -91,17 +88,20 @@ public class MainScript : MonoBehaviour
         InvokeRepeating(nameof(InstantiateBlock), firstBlockSeconds, addBlockRate);
 
         strikebeamSong.Play();
+
+        ShowGameControls();
     }
 
     private void UpdateUI()
     {
-        // TODO: make these textboxes automatically update when the variables change
-        Text levelText = _ui.transform.Find("LevelText").GetComponent<Text>();
-        Text livesText = _ui.transform.Find("LivesText").GetComponent<Text>();
-        Text scoreText = _ui.transform.Find("ScoreText").GetComponent<Text>();
-        levelText.text = $"Level {_level}";
-        livesText.text = $"{_lives} Lives";
-        scoreText.text = $"{_score} Points";
+        var gameUIScript = gameUI.GetComponent<GameUI>();
+        gameUIScript.UpdateText(_level, _lives, _score);
+    }
+
+    private void ShowGameControls()
+    {
+        var gameUIScript = gameUI.GetComponent<GameUI>();
+        gameUIScript.ShowGameControls();
     }
 
     void Update()
@@ -176,112 +176,109 @@ public class MainScript : MonoBehaviour
             TogglePause();
         }
 
-        if (_paused)
+        if (Input.GetKeyUp(KeyCode.M))
         {
-            if (Input.GetKeyUp(KeyCode.M))
-            {
-                LoadMenuScene();
-            }
+            LoadMenuScene();
+        }
 
-            if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            Application.Quit();
+        }
+
+        if (_paused) return;
+
+        if (Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
+            foreach (var ball in ballsInPlay)
             {
-                Application.Quit();
+                var ballScript = ball.GetComponent<Ball>();
+                ballScript.SpeedUp(ballScript.maxSpeedAfterCollision);
             }
         }
-        else
+
+        if (Input.GetKeyUp(KeyCode.DownArrow))
         {
-            if (Input.GetKeyUp(KeyCode.UpArrow))
+            var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
+            foreach (var ball in ballsInPlay)
             {
-                var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
-                foreach (var ball in ballsInPlay)
-                {
-                    var ballScript = ball.GetComponent<Ball>();
-                    ballScript.SpeedUp(ballScript.maxSpeedAfterCollision);
-                }
+                var ballScript = ball.GetComponent<Ball>();
+                ballScript.SlowDown(ballScript.minSpeed);
             }
+        }
 
-            if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
-                foreach (var ball in ballsInPlay)
-                {
-                    var ballScript = ball.GetComponent<Ball>();
-                    ballScript.SlowDown(ballScript.minSpeed);
-                }
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha1))
+        {
+            SkipToLevel(1);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha1))
-            {
-                SkipToLevel(1);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha2))
+        {
+            SkipToLevel(2);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha2))
-            {
-                SkipToLevel(2);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha3))
+        {
+            SkipToLevel(3);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha3))
-            {
-                SkipToLevel(3);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha4))
+        {
+            SkipToLevel(4);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha4))
-            {
-                SkipToLevel(4);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha5))
+        {
+            SkipToLevel(5);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha5))
-            {
-                SkipToLevel(5);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha6))
+        {
+            SkipToLevel(6);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha6))
-            {
-                SkipToLevel(6);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha7))
+        {
+            SkipToLevel(7);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha7))
-            {
-                SkipToLevel(7);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha8))
+        {
+            SkipToLevel(8);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha8))
-            {
-                SkipToLevel(8);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha9))
+        {
+            SkipToLevel(9);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha9))
-            {
-                SkipToLevel(9);
-            }
+        if (Input.GetKeyUp(KeyCode.Alpha0))
+        {
+            SkipToLevel(10);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Alpha0))
-            {
-                SkipToLevel(10);
-            }
+        if (Input.GetKeyUp(KeyCode.Minus))
+        {
+            SkipToLevel(11);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Minus))
-            {
-                SkipToLevel(11);
-            }
+        if (Input.GetKeyUp(KeyCode.Equals))
+        {
+            SkipToLevel(12);
+        }
 
-            if (Input.GetKeyUp(KeyCode.Equals))
+        if (Input.GetKeyUp(KeyCode.Delete))
+        {
+            foreach (var ball in GameObject.FindGameObjectsWithTag("Ball"))
             {
-                SkipToLevel(12);
+                Destroy(ball);
             }
+        }
 
-            if (Input.GetKeyUp(KeyCode.Delete))
-            {
-                foreach (var ball in GameObject.FindGameObjectsWithTag("Ball"))
-                {
-                    Destroy(ball);
-                }
-            }
-
-            if (Input.GetKeyUp(KeyCode.Insert))
-            {
-                Instantiate(ball);
-            }
+        if (Input.GetKeyUp(KeyCode.Insert))
+        {
+            Instantiate(ball);
         }
     }
 
@@ -346,6 +343,7 @@ public class MainScript : MonoBehaviour
 
     private void Pause()
     {
+        ShowGameControls();
         Pause(pauseScreen, true);
     }
 
