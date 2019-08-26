@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 1136548925235458415}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -117,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 5, y: 5, z: 0}
+  m_LocalPosition: {x: 2.73, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4486086454571962499}
@@ -174,6 +175,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
+--- !u!114 &1136548925235458415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0bcf20bf40ec1040b1b6237142e0942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positionAtMinZoom: {x: 3, y: 7, z: 0}
+  positionAtMaxZoom: {x: 5, y: 2, z: 0}
+  zoomLevel: 0.5
+  zoomChangeSpeed: 0.05
+  stage: {fileID: 6398619088987617524}
 --- !u!1 &4486086454571962501
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c4d2f4222d1904b97e714f5490dcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  developmentMode: 1
+  initialNumLives: 0
   firstBlockSeconds: 3.75
   addBlockRate: 3.75
   blockSpaceRadius: 2
@@ -235,6 +255,17 @@ MonoBehaviour:
   blockRingNumBlocks: 6
   blockRingRadius: 0.7
   emergencySlowMotionRadius: 2
+  stage: {fileID: 6398619088987617524}
+  gameUI: {fileID: 8460799552596376065}
+  pauseScreen: {fileID: 7251827140782002190, guid: 83fe458d8771cab41b6d0899f9d9f896,
+    type: 3}
+  winScreen: {fileID: 3579144206437673685, guid: 957f1e524680afe4f9a418d7bea4f351,
+    type: 3}
+  gameOverScreen: {fileID: 5335307683277769467, guid: e9f0f95484412cb49bc42dcce9a9f675,
+    type: 3}
+  menuSceneName: MenuScene
+  camera: {fileID: 1136548925235458415}
+  strikebeamSong: {fileID: 375696800514187116}
   ball: {fileID: 1784785013204505379, guid: 329a34250d779304db1d0aff3383f39a, type: 3}
   normalBlock: {fileID: 4051772861863158749, guid: fc6ac5d4d57efc24299a18ed1eacf62b,
     type: 3}
@@ -257,15 +288,6 @@ MonoBehaviour:
     type: 3}
   spinningSquareBlock: {fileID: 8772065395936644541, guid: e1a284c3cc78e794386165037ddca1dd,
     type: 3}
-  strikebeamSong: {fileID: 375696800514187116}
-  gameUI: {fileID: 8460799552596376065}
-  pauseScreen: {fileID: 7251827140782002190, guid: 83fe458d8771cab41b6d0899f9d9f896,
-    type: 3}
-  winScreen: {fileID: 3579144206437673685, guid: 957f1e524680afe4f9a418d7bea4f351,
-    type: 3}
-  gameOverScreen: {fileID: 5335307683277769467, guid: e9f0f95484412cb49bc42dcce9a9f675,
-    type: 3}
-  menuSceneName: MenuScene
 --- !u!82 &375696800514187116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -461,6 +483,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87b8e3452b0af8499884f1209dcbf7c, type: 3}
+--- !u!1 &6398619088987617524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4679880167564661774, guid: f87b8e3452b0af8499884f1209dcbf7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1746886616765803770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6398619088987617520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4679880167564661770, guid: f87b8e3452b0af8499884f1209dcbf7c,

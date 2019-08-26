@@ -11,7 +11,9 @@ using Random = UnityEngine.Random;
 public class MainScript : MonoBehaviour
 {
     public bool developmentMode;
-    
+
+    public int initialNumLives;
+
     public float firstBlockSeconds;
     public float addBlockRate;
     public float blockSpaceRadius;
@@ -27,8 +29,18 @@ public class MainScript : MonoBehaviour
 
     public float emergencySlowMotionRadius;
 
-    public GameObject ball;
+    public GameObject stage;
+    public GameObject gameUI;
+    public GameObject pauseScreen;
+    public GameObject winScreen;
+    public GameObject gameOverScreen;
+    public string menuSceneName;
+    public CameraScript camera;
 
+    public AudioSource strikebeamSong;
+
+    // Prefabs to instantiate
+    public GameObject ball;
     public GameObject normalBlock;
     public GameObject rockBlock;
     public GameObject ballBlock;
@@ -40,17 +52,6 @@ public class MainScript : MonoBehaviour
     public GameObject glassGrenadeBlock;
     public GameObject squareBlock;
     public GameObject spinningSquareBlock;
-
-    public AudioSource strikebeamSong;
-
-    public GameObject gameUI;
-
-    public GameObject pauseScreen;
-    public GameObject winScreen;
-    public GameObject gameOverScreen;
-    public string menuSceneName;
-
-
 
     private const int NumLevels = 11;
 
@@ -80,7 +81,7 @@ public class MainScript : MonoBehaviour
 
     void Start()
     {
-        _lives = 3;
+        _lives = initialNumLives;
         _level = 0;
         _gameOver = false;
         _score = 0;
@@ -92,6 +93,8 @@ public class MainScript : MonoBehaviour
         strikebeamSong.Play();
 
         ShowGameControls();
+
+        camera.transform.LookAt(stage.transform);
     }
 
     private void UpdateUI()
@@ -155,7 +158,20 @@ public class MainScript : MonoBehaviour
 
         foreach (var ball in ballsInPlay)
         {
-            if (ball.transform.position.magnitude < emergencySlowMotionRadius)
+            var ballPosition = ball.transform.position;
+            var ballVelocity = ball.GetComponent<Rigidbody>().velocity;
+
+            if (ballPosition.magnitude < emergencySlowMotionRadius)
+            {
+                return false;
+            }
+
+            var ballWillCollideWithSomething = Physics.Raycast(
+                ballPosition,
+                ballVelocity,
+                7f // some arbitrary large number that will always span the whole stage
+            );
+            if (ballWillCollideWithSomething)
             {
                 return false;
             }
@@ -190,31 +206,8 @@ public class MainScript : MonoBehaviour
 
         if (_paused) return;
 
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
-            foreach (var ball in ballsInPlay)
-            {
-                var ballScript = ball.GetComponent<Ball>();
-                ballScript.SpeedUp(ballScript.maxSpeedAfterCollision);
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            var ballsInPlay = GameObject.FindGameObjectsWithTag("Ball");
-            foreach (var ball in ballsInPlay)
-            {
-                var ballScript = ball.GetComponent<Ball>();
-                ballScript.SlowDown(ballScript.minSpeed);
-            }
-        }
-
         // After this point are controls for easier game testing during development
-        if (!developmentMode)
-        {
-            return;
-        }
+        if (!developmentMode) return;
 
         if (Input.GetKeyUp(KeyCode.Alpha1))
         {
