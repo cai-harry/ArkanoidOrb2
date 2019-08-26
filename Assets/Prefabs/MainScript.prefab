@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c4d2f4222d1904b97e714f5490dcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  developmentMode: 1
-  initialNumLives: 0
+  developmentMode: 0
+  initialNumLives: 3
   firstBlockSeconds: 3.75
   addBlockRate: 3.75
   blockSpaceRadius: 2
