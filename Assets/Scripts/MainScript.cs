@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 
 public class MainScript : MonoBehaviour
 {
+    public bool developmentMode;
+    
     public float firstBlockSeconds;
     public float addBlockRate;
     public float blockSpaceRadius;
@@ -206,6 +208,12 @@ public class MainScript : MonoBehaviour
                 var ballScript = ball.GetComponent<Ball>();
                 ballScript.SlowDown(ballScript.minSpeed);
             }
+        }
+
+        // After this point are controls for easier game testing during development
+        if (!developmentMode)
+        {
+            return;
         }
 
         if (Input.GetKeyUp(KeyCode.Alpha1))
